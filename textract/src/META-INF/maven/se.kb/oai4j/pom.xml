@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>se.kb</groupId>
+  <artifactId>oai4j</artifactId>
+  <packaging>jar</packaging>
+  <version>0.6-SNAPSHOT</version>
+  <name>oai4j</name>
+  <url>http://maven.apache.org</url>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+       <groupId>dom4j</groupId>
+       <artifactId>dom4j</artifactId>
+       <version>1.6.1</version>
+    </dependency>
+    <dependency>
+       <groupId>jaxen</groupId>
+       <artifactId>jaxen</artifactId>
+       <version>1.1.1</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.0</version>
+          <configuration>
+              <source>1.5</source>
+              <target>1.5</target>
+          </configuration>
+      </plugin>
+      <plugin>
+    	<groupId>org.apache.maven.plugins</groupId>
+    	<artifactId>maven-jar-plugin</artifactId>
+    	<version>2.2</version>
+    	<configuration>
+    		<includes>
+    			<include>**/oai/*.class</include>
+    			<include>**/oai/ore/**</include>
+    			<include>**/oai/pmh/**</include>
+    			<include>**/xml/**</include>
+    		</includes>
+    	</configuration>
+	   </plugin>
+    </plugins>
+  </build>
+  
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+        	<links>
+        		<value>http://java.sun.com/javase/6/docs/api/</value>
+        		<value>http://www.dom4j.org/apidocs/</value>
+        	</links>
+        	<excludePackageNames>se.kb.oai.main</excludePackageNames>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+</project>
