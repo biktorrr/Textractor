@@ -5,7 +5,7 @@ import org.json.simple.JSONArray;
 public class TokenMatch{
 	 public String token;
 	 public int frequency;
-	 public JSONArray gtaaMatches; //TODO: make arraylist
+	 public JSONArray gtaaMatches; 
 	 
 	 
 	 public TokenMatch(){

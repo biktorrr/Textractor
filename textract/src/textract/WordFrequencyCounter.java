@@ -43,7 +43,7 @@ import java.util.StringTokenizer;
 	    	int i = 0;
 	    	while (st.hasMoreTokens()) {
 		    	String curToken = st.nextToken();
-		    	tokens[i] = curToken;
+		    	tokens[i] = curToken.toLowerCase();
 		    	i++;
 	    	}
 	    	return this.getFrequentWords(tokens);

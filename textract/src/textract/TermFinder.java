@@ -1,34 +1,38 @@
 package textract;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import sun.misc.IOUtils;
-
 public class TermFinder {
 
-	private String baseurl;
-	private String basequery;
-	
+
+	private String index;
+
 	public TermFinder(){
-		baseurl = "http://localhost:9200/";
-		basequery = "gtaa/_search?q=preflabel:";
+
+		index = "gtaa";
 		}
 	
-
+/*
 	public String getJsonStringFromURL(String urlString) throws IOException{
 		URL url = new URL(urlString);
 		URLConnection con = url.openConnection();
@@ -37,7 +41,85 @@ public class TermFinder {
 		return result;
 	}
 	
-	public JSONArray findTerm(String searchString) {
+	public String getJsonStringFromPOST(String urlString, String postString) throws IOException{
+		URL url;
+	    HttpURLConnection connection = null;  
+	    try {
+	      //Create connection
+	      url = new URL(urlString);
+	      connection = (HttpURLConnection)url.openConnection();
+	      connection.setRequestMethod("POST");
+	      connection.setRequestProperty("Content-Type", 
+	           "application/x-www-form-urlencoded");
+				
+	      connection.setRequestProperty("Content-Length", "" + 
+	               Integer.toString(postString.getBytes().length));
+	      connection.setRequestProperty("Content-Language", "en-US");  
+				
+	      connection.setUseCaches (false);
+	      connection.setDoInput(true);
+	      connection.setDoOutput(true);
+
+	      //Send request
+	      DataOutputStream wr = new DataOutputStream (
+	                  connection.getOutputStream ());
+	      wr.writeBytes (postString);
+	      wr.flush ();
+	      wr.close ();
+
+	      //Get Response	
+	      InputStream is = connection.getInputStream();
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(is));
+	      String line;
+	      StringBuffer response = new StringBuffer(); 
+	      while((line = rd.readLine()) != null) {
+	        response.append(line);
+	        response.append('\r');
+	      }
+	      rd.close();
+	      return response.toString();
+
+	    } catch (Exception e) {
+
+	      e.printStackTrace();
+	      return null;
+
+	    } finally {
+
+	      if(connection != null) {
+	        connection.disconnect(); 
+	      }
+	    }
+	}
+	*/
+
+	public JSONArray findTerm(Client client, String searchString)  {
+		JSONArray hitshits = new JSONArray();
+		
+		SearchResponse response = client.prepareSearch(index)
+			      //  .setTypes("type1", "type2")
+			       // .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+			        .setQuery(QueryBuilders.termQuery("preflabel", searchString))             // Query
+			        .execute()
+			        .actionGet();
+		
+
+			try {
+				String esJSONString =response.toString();	
+				JSONObject esJsonObject;
+				esJsonObject = (JSONObject) JSONValue.parseWithException(esJSONString);
+				JSONObject hits = (JSONObject) esJsonObject.get("hits");
+				hitshits = (JSONArray) hits.get("hits");
+				
+			} catch (ParseException  e) {
+				e.printStackTrace();
+			}
+
+			return hitshits;
+
+	}
+	/*
+	public JSONArray findTerm(Client client, String searchString) {
 		JSONArray hitshits = new JSONArray();
 		String urlString = baseurl + basequery + searchString;
 		try {
@@ -55,9 +137,13 @@ public class TermFinder {
 		return hitshits;
 
 
+	}*/
+	public static void main(String[] args) throws ParseException {
+		JSONObject j = new JSONObject(); 
+		j.put("query", "{"); 
+		j.put("age", "20"); 
+
 	}
-	
-	
 		
 }
 
