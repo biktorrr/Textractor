@@ -34,10 +34,8 @@ public class Textractor {
 	private static ArrayList<String> stopwords;
 	
 	private static int minFreq = 5; // minimum frequency for a token to be added to the tokenlist
-	
-	//GTAA elasticsearch params
-	private static String host = "127.0.0.1";
-	private static int port = 9300;
+	private static double minScore= 3.0; // minimum score for a GTAA match 
+
 
 	// OAI list record parameters
 	private static String from = "2014-02-03T12:00:00Z"; 
@@ -68,12 +66,12 @@ public class Textractor {
 	
 	
 	// generate terms for a frequency list
-	public static ArrayList<TokenMatch> getTermsForFreqList(Client client, ArrayList<Word> wordfreq) throws ParseException{
+	public static ArrayList<TokenMatch> getTermsForFreqList(ElasticGTAASearcher es, ArrayList<Word> wordfreq) throws ParseException{
 		ArrayList<TokenMatch> termList =  new ArrayList<TokenMatch>();
 		
 		for(int i = 0; i<wordfreq.size(); i++){
 			TermFinder tf = new TermFinder();
-	        JSONArray foundTerm = tf.findTerm(client, wordfreq.get(i).word);
+	        JSONArray foundTerm = tf.findTermWithThreshold(es, wordfreq.get(i).word, minScore);
 	        
 	        TokenMatch tm = new TokenMatch();
 	        tm.frequency= wordfreq.get(i).count;
@@ -119,13 +117,13 @@ public class Textractor {
 	
 	// input: ES client and oai identifier string
 	// output: list of tokenmatches for one item
-	public static ArrayList<TokenMatch> getTokenMatches(Client client, String oaiIdentifier) throws ParseException{
+	public static ArrayList<TokenMatch> getTokenMatches(ElasticGTAASearcher es, String oaiIdentifier) throws ParseException{
 		System.out.println("Retrieving tokens from record " + oaiIdentifier);
 		String x = getMetadataForOAIRecord(oaiIdentifier);
 		Word[] frequency = new WordFrequencyCounter().getFrequentTokensFromString(x);
 		ArrayList<Word> wordlist = removeStopwords(frequency);
 		System.out.print(" Matching to GTAA");
-		ArrayList<TokenMatch> result = getTermsForFreqList(client, wordlist);
+		ArrayList<TokenMatch> result = getTermsForFreqList(es, wordlist);
 		return result;
 	}
 	
@@ -156,12 +154,9 @@ public class Textractor {
 			stopwords = new StopWords().getStopwords();
 			ArrayList<ArrayList<TokenMatch>> endResult = new ArrayList<ArrayList<TokenMatch>>();
 			
-			//Connecting to GTAA Elasticsearch server
-			System.out.println("Connecting to GTAA Elasticsearch server");
-			Settings settings = ImmutableSettings.settingsBuilder().put("cluster_name", "elasticsearch").build();
-			Client client = new TransportClient(settings).addTransportAddress(new InetSocketTransportAddress(host, port));
+
 			
-			ElasticSearcher gtaaES = new ElasticSearcher();
+			ElasticGTAASearcher gtaaES = new ElasticGTAASearcher();
 			
 			// get records from OAI
 			try {
@@ -177,7 +172,7 @@ public class Textractor {
 					writer.println(recordid+ "\n");
 					System.out.print(Integer.toString(i) + ": ");
 
-					ArrayList<TokenMatch> result = getTokenMatches(client, recordid);
+					ArrayList<TokenMatch> result = getTokenMatches(gtaaES, recordid);
 					for(int j = 0;j<result.size();j++){	
 						writer.println(result.get(j).toString());
 					}
@@ -190,7 +185,7 @@ public class Textractor {
 	
 						
 			writer.close();
-			client.close();
+			gtaaES.closeClient();
 			System.out.println("I'm done");
 			
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
