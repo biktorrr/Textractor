@@ -1,7 +1,13 @@
 package textract;
 import static org.elasticsearch.node.NodeBuilder.*;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.apache.lucene.queryparser.xml.FilterBuilderFactory;
+import org.elasticsearch.action.bulk.BulkRequestBuilder;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -9,6 +15,8 @@ import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.index.query.FilterBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -79,7 +87,7 @@ public class ElasticGTAASearcher {
 	//search in one Concept Scheme
 	// doesnt work
 	public String searchForStringInCS(String searchString, String conceptScheme) {
-
+		// remove namespace
 		SearchResponse response = client.prepareSearch(index)
 			        .setQuery(QueryBuilders.filteredQuery(QueryBuilders.matchAllQuery(), 
 			        		FilterBuilders.andFilter(
@@ -91,6 +99,40 @@ public class ElasticGTAASearcher {
 			        .actionGet();		
 		return response.toString();	
 	}	
+	
+	public void indexESDocs(ArrayList<ESDoc> esdocs){
+		BulkRequestBuilder bulkRequest = client.prepareBulk();
+	
+		
+		for( int i = 0 ; i< esdocs.size();i++){
+			ESDoc ed = esdocs.get(i);
+			String myuri = ed.uri.replaceAll("/", "_");
+			// only gtaa concepts
+			if (ed.conceptSchemes.contains("data.beeldengeluid.nl/gtaa")){
+				try {
+					
+					bulkRequest.add(client.prepareIndex("gtaa", "concept", myuri)
+					        .setSource(XContentFactory.jsonBuilder()
+					                    .startObject()
+					                        .field("uri", myuri)
+					                        .field("preflabel", ed.preflabel)
+					                        .field("altlabel", ed.altlabel)
+					                        .field("conceptScheme", ed.conceptSchemes)
+					                    .endObject()
+					                  )
+					        );
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		BulkResponse bulkResponse = bulkRequest.execute().actionGet();
+		
+		if (bulkResponse.hasFailures()) {
+		    // process failures by iterating through each bulk response item
+			}
+	}
 	
 	
 	public static void main(String[] args) {

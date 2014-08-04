@@ -79,9 +79,6 @@ public class Textractor {
 	        tm.token= wordfreq.get(i).word;
 	        termList.add(tm);
 	        if (i%10 == 0){System.out.print(".");}
-	        	
-	   
-	        //System.out.println(tm.toString());
 	     }
 		if (termList.size() < 1) System.out.println(" no terms found");
 		else System.out.println(" done");
@@ -89,11 +86,31 @@ public class Textractor {
 	}
 	
 	
-
+	// this function gets the manually added terms (used to train or evaluate the automated system)
+	public static ArrayList<String> getExistingTerms(String recordID){
+		ArrayList<String> result = new ArrayList<String>();
+		
+		OaiPmhServer server = new OaiPmhServer(bg_oai_server);
+		Record record;
+		try {
+			record = server.getRecord(recordID, "iMMix");
+			Element metadata = record.getMetadata();
+			List list = metadata.selectNodes("//iMMix:trefwoord" );
+			Iterator iter=list.iterator();			
+			// Iterate through the word sequences
+	        while(iter.hasNext()){
+	            Element elt =(Element) iter.next();
+	            result.add(elt.getText());
+	        }		
+		}
+		catch (OAIException e) {e.printStackTrace();}	
+		return result ;
+	}
 	
 	// get the actual wordsequences for a record. question is, do we do the terms for the video as a whole or not?
 	// for now, this returns the entire string
 	// TODO: make sure we only include TT, not SH or other
+	// TODO: this could probably be done within the listrecords request. So this is not particularly efficient...
 	public static String getMetadataForOAIRecord(String recordID){
 		String metadataString = "";
 		OaiPmhServer server = new OaiPmhServer(bg_oai_server);
@@ -110,10 +127,11 @@ public class Textractor {
 	            metadataString += wordseq.getText();
 	        }		
 		}
-		catch (OAIException e) {e.printStackTrace();}
-		
+		catch (OAIException e) {e.printStackTrace();}	
 		return metadataString ;
 	}
+	
+	
 	
 	// input: ES client and oai identifier string
 	// output: list of tokenmatches for one item
@@ -148,11 +166,10 @@ public class Textractor {
 	
 	public static void main(String[] args) throws ParseException {
 		try {
-			PrintWriter writer;
-			writer = new PrintWriter("textractor_output.txt", "UTF-8");
+			
 			
 			stopwords = new StopWords().getStopwords();
-			ArrayList<ArrayList<TokenMatch>> endResult = new ArrayList<ArrayList<TokenMatch>>();
+			ArrayList<ImmixRecord> endResult = new ArrayList<ImmixRecord>();
 			
 
 			
@@ -169,21 +186,22 @@ public class Textractor {
 				System.out.println("Looping through records");
 				for (int i=0; i<recordList.size();i++){
 					String recordid = recordList.get(i).getHeader().getIdentifier();
-					writer.println(recordid+ "\n");
-					System.out.print(Integer.toString(i) + ": ");
-
+					System.out.println(Integer.toString(i) + ": " + recordid);
 					ArrayList<TokenMatch> result = getTokenMatches(gtaaES, recordid);
-					for(int j = 0;j<result.size();j++){	
-						writer.println(result.get(j).toString());
-					}
-					writer.println("\n\n");
-					endResult.add(result);
+					ArrayList<String> manTerms = getExistingTerms(recordid);
+					ImmixRecord ir = new ImmixRecord(manTerms, result, recordid);
+
+					endResult.add(ir);
 				}
 			} catch (OAIException e) {
 				e.printStackTrace();
 			}
-	
-						
+			// output to file
+			PrintWriter writer;
+			writer = new PrintWriter("textractor_output.txt", "UTF-8");		
+			for(int j = 0;j<endResult.size();j++){	
+					writer.println(endResult.get(j).toString());
+			}
 			writer.close();
 			gtaaES.closeClient();
 			System.out.println("I'm done");
