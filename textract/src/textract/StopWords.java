@@ -33,7 +33,7 @@ public class StopWords {
 		}
 	}
 	public ArrayList<String> readStopWordFile () throws IOException{
-		return readStopWordFile("./src/textract/dutch-stop-words.txt");
+		return readStopWordFile("./assets/dutch-stop-words.txt");
 	   
 	    }
 	

@@ -31,11 +31,12 @@ import textract.WordFrequencyCounter.Word;
 public class Textractor {
 
 	private static String bg_oai_server = "http://integrator.beeldengeluid.nl/search_service_rs/oai/";
-	private static ArrayList<String> stopwords;
+	private  ArrayList<String> stopwords; // list of stopwords
 	
 	private static int minFreq = 3; // minimum frequency for a token to be added to the tokenlist
 	private static double minScore= 3.0; // minimum score for a GTAA match 
 
+	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
 	// OAI list record parameters
 	private static String from = "2014-02-03T12:00:00Z"; 
@@ -50,11 +51,11 @@ public class Textractor {
 
 	
 	// remove stopwords from frequency Words (return as ArrayList)
-	// also remove infrequent words
-	public static ArrayList<Word> removeStopwords (Word[] frequencyTokens){
+	// also remove infrequent words  (< minScore)
+	public ArrayList<Word> removeUnwantedWords (Word[] frequencyTokens){
 		ArrayList<Word> freqAl = new ArrayList<Word>();
         for(Word w:frequencyTokens){
-            if (stopwords.contains(w.word) || w.count<minFreq ){
+            if (this.stopwords.contains(w.word) || w.count<minFreq ){
             }
             else {
             	freqAl.add(w);
@@ -66,17 +67,20 @@ public class Textractor {
 	
 	
 	// generate terms for a frequency list
-	public static ArrayList<TokenMatch> getTermsForFreqList(ElasticGTAASearcher es, ArrayList<Word> wordfreq) throws ParseException{
+	public  ArrayList<TokenMatch> getTermsForFreqList(ElasticGTAASearcher es, ArrayList<Word> wordfreq) throws ParseException{
 		ArrayList<TokenMatch> termList =  new ArrayList<TokenMatch>();
 		
 		for(int i = 0; i<wordfreq.size(); i++){
 			TermFinder tf = new TermFinder();
+			
 	        JSONArray foundTerm = tf.findTermWithThreshold(es, wordfreq.get(i).word, minScore);
 	        
 	        TokenMatch tm = new TokenMatch();
 	        tm.frequency= wordfreq.get(i).count;
 	        tm.gtaaMatches= foundTerm;
 	        tm.token= wordfreq.get(i).word;
+	        int wf =  termfreqFinder.getWordFrequency(tm.token);
+	        tm.normfrequency = (float) tm.frequency / (float) wf; 
 	        termList.add(tm);
 	        if (i%10 == 0){System.out.print(".");}
 	     }
@@ -87,7 +91,7 @@ public class Textractor {
 	
 	
 	// this function gets the manually added terms (used to train or evaluate the automated system)
-	public static ArrayList<String> getExistingTerms(String recordID){
+	public  ArrayList<String> getExistingTerms(String recordID){
 		ArrayList<String> result = new ArrayList<String>();
 		
 		OaiPmhServer server = new OaiPmhServer(bg_oai_server);
@@ -111,7 +115,7 @@ public class Textractor {
 	// for now, this returns the entire string
 	// TODO: make sure we only include TT, not SH or other
 	// TODO: this could probably be done within the listrecords request. So this is not particularly efficient...
-	public static String getMetadataForOAIRecord(String recordID){
+	public  String getMetadataForOAIRecord(String recordID){
 		String metadataString = "";
 		OaiPmhServer server = new OaiPmhServer(bg_oai_server);
 		Record record;
@@ -135,11 +139,11 @@ public class Textractor {
 	
 	// input: ES client and oai identifier string
 	// output: list of tokenmatches for one item
-	public static ArrayList<TokenMatch> getTokenMatches(ElasticGTAASearcher es, String oaiIdentifier) throws ParseException{
+	public  ArrayList<TokenMatch> getTokenMatches(ElasticGTAASearcher es, String oaiIdentifier) throws ParseException{
 		System.out.println("Retrieving tokens from record " + oaiIdentifier);
 		String x = getMetadataForOAIRecord(oaiIdentifier);
 		Word[] frequency = new WordFrequencyCounter().getFrequentTokensFromString(x);
-		ArrayList<Word> wordlist = removeStopwords(frequency);
+		ArrayList<Word> wordlist = removeUnwantedWords(frequency); // remove stopwords and such
 		System.out.print(" Matching to GTAA");
 		ArrayList<TokenMatch> result = getTermsForFreqList(es, wordlist);
 		return result;
@@ -147,7 +151,7 @@ public class Textractor {
 	
 	// input: some demarcation of items
 	// output: list of items 
-	public static RecordsList getOAIItemsForTimePeriod(String from, String until, String set) throws OAIException{
+	public RecordsList getOAIItemsForTimePeriod(String from, String until, String set) throws OAIException{
 		QueryBuilder builder = new QueryBuilder(bg_oai_server);
 		SAXReader reader = new SAXReader();
 		try{
@@ -167,8 +171,11 @@ public class Textractor {
 	public static void main(String[] args) throws ParseException {
 		try {
 			
+			Textractor gogo = new Textractor();
 			
-			stopwords = new StopWords().getStopwords();
+			gogo.stopwords = new StopWords().getStopwords();
+			gogo.termfreqFinder = new TermFrequency();
+			
 			ArrayList<ImmixRecord> endResult = new ArrayList<ImmixRecord>();
 			
 
@@ -178,7 +185,7 @@ public class Textractor {
 			// get records from OAI
 			try {
 				System.out.println("Retrieving records from OAI server");
-				RecordsList rl = getOAIItemsForTimePeriod(from, until, set);
+				RecordsList rl = gogo.getOAIItemsForTimePeriod(from, until, set);
 				List<Record> recordList = rl.asList();
 				ResumptionToken rt  = rl.getResumptionToken(); //TODO: go on with new resumption token
 				
@@ -187,8 +194,8 @@ public class Textractor {
 				for (int i=0; i<recordList.size();i++){
 					String recordid = recordList.get(i).getHeader().getIdentifier();
 					System.out.println(Integer.toString(i) + ": " + recordid);
-					ArrayList<TokenMatch> result = getTokenMatches(gtaaES, recordid);
-					ArrayList<String> manTerms = getExistingTerms(recordid);
+					ArrayList<TokenMatch> result = gogo.getTokenMatches(gtaaES, recordid);
+					ArrayList<String> manTerms = gogo.getExistingTerms(recordid);
 					ImmixRecord ir = new ImmixRecord(manTerms, result, recordid);
 
 					endResult.add(ir);

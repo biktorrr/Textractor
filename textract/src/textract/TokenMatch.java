@@ -6,9 +6,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class TokenMatch{
-	 public String token;
-	 public int frequency;
-	 public JSONArray gtaaMatches; 
+	 public String token; 			//the token itself
+	 public int frequency;			//the frequency in the subtitles
+	 public float normfrequency ; 	//the frequency in Dutch language
+	 public JSONArray gtaaMatches;  //the matched gtaa entries
 	 
 	 
 	 public TokenMatch(){
@@ -28,7 +29,7 @@ public class TokenMatch{
 	 
 	 // only preflabels matches
 	 public String toStringPL(){
-		 String returnString =  token + " " + Integer.toString(frequency);
+		 String returnString =  token + " " + Integer.toString(frequency) + " " + Float.toString(normfrequency);
 		 for (int i=0;i<gtaaMatches.size();i++){
 			 
 			 if (i>0){returnString += ", ";}
