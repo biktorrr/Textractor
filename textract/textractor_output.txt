@@ -1,0 +1,485 @@
+Record oai:beeldengeluid.nl:Selectie:94927556
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:191331
+ Manual terms:Verzet, monumenten
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927586
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927606
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927553
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4216705
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213142
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4194822
+ Manual terms:alcohol, alcoholisme, badhuizen, begraafplaatsen, depressies, emoties, graven, ijs, musici, muziek, scheidingen, sleeën, sneeuw, stadsbeelden, straatbeelden, vissen, zelfdoding Found terms
+  auto 3 matches: auto-industrie
+
+
+Record oai:beeldengeluid.nl:Expressie:4217538
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4212692
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4192125
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4122332
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213455
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4211568
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:122437
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213598
+ Manual terms:bankwezen, economische crises Found terms
+  lokale 8 matches: lokale omroepen
+  geld 7 matches: geld
+  europese 4 matches: Europese records
+  schaal 4 matches: schaal- en schelpdieren
+  contracten 3 matches: overeenkomsten
+  economie 3 matches: economie
+  mensen 3 matches: lange mensen, dikke mensen
+
+
+Record oai:beeldengeluid.nl:Expressie:677775
+ Manual terms:amateurtheater, grimeren, imago, pers, sabotage
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4209978
+ Manual terms:geneesmiddelen, gezondheid, hofjes, lijken, mummies, portretten, vaccinaties, vitamines, voedsel, wetenschappelijk onderzoek Found terms
+  oud 12 matches: oud-strijders
+  mensen 10 matches: lange mensen, dikke mensen
+  bijna 6 matches: bijna-doodervaringen
+  hormonen 4 matches: hormonen
+  ogen 4 matches: ogen
+  lichaam 3 matches: menselijk lichaam
+
+
+Record oai:beeldengeluid.nl:Selectie:94927554
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927587
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927581
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927547
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Realisatie:359309
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Reeks:391729
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Reeks:398523
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Realisatie:361840
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4216863
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4217019
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4171499
+ No manual terms Found terms
+  mensen 22 matches: lange mensen, dikke mensen
+  geld 10 matches: geld
+  chemische 9 matches: chemische stoffen, chemische elementen, chemische wapens
+  onderwijs 9 matches: bijzonder onderwijs, wetenschappelijk onderwijs, voortgezet onderwijs, basisonderwijs, islamitisch onderwijs, openbaar onderwijs, hoger onderwijs, vwo, christelijk onderwijs, onderwijs
+  bijstand 7 matches: bijstand
+  wapens 7 matches: biologische wapens, wapens, chemische wapens
+  koken 6 matches: voedselbereiding
+  radio 6 matches: radio, praatradio
+  weg 6 matches: wegenbouw, waterbouw
+  bezuinigingen 5 matches: bezuinigingen
+  acties 4 matches: acties
+  bijna 4 matches: bijna-doodervaringen
+  gemeenten 4 matches: gemeenten
+  gevonden 4 matches: gevonden voorwerpen
+  onderzoek 4 matches: medisch onderzoek, forensisch onderzoek, prenataal onderzoek, oceanografie
+  open 4 matches: volwassenenonderwijs
+  bommen 3 matches: bommen
+  christelijke 3 matches: religieuze feestdagen
+  diensten 3 matches: inlichtingendiensten
+  eerste 3 matches: EHBO
+  militairen 3 matches: militairen
+  natuur 3 matches: natuur, natuur- en milieuprogramma's
+  sociale 3 matches: sociale media, sociale wetenschappen, sociale vraagstukken, sociaal beleid, sociale dienstplicht, sociale bewegingen, uitkeringen, sociale voorzieningen, sociale werkvoorziening
+  werkloosheid 3 matches: werkloosheid
+  wilde 3 matches: wilde zwijnen
+  wonen 3 matches: huisvesting
+
+
+Record oai:beeldengeluid.nl:Expressie:677774
+ Manual terms:acteurs, ondernemingen, quizzen, toneel, werknemers
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213596
+ Manual terms:voetbal Found terms
+  eerste 17 matches: EHBO
+  bijna 9 matches: bijna-doodervaringen
+  weg 4 matches: wegenbouw, waterbouw
+  stand 3 matches: persoonsregistratie
+
+
+Record oai:beeldengeluid.nl:Expressie:4217176
+ No manual terms Found terms
+  n 10 matches: rock-'n-roll
+  eerste 5 matches: EHBO
+  woon 5 matches: forenzen
+  organisatie 4 matches: adviesbureaus
+
+
+Record oai:beeldengeluid.nl:Expressie:4217219
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4208109
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4207690
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213999
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213559
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4210289
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4209823
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:110068
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4122333
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4217213
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4171263
+ No manual terms Found terms
+  mensen 21 matches: lange mensen, dikke mensen
+  school 17 matches: volwassenenonderwijs
+  geld 14 matches: geld
+  eerste 11 matches: EHBO
+  zaken 9 matches: kookkunst
+  auto 7 matches: auto-industrie
+  kernwapens 7 matches: kernwapens
+  open 7 matches: volwassenenonderwijs
+  radio 7 matches: radio, praatradio
+  ouders 6 matches: ouders
+  beleid 5 matches: buitenlands beleid, sociaal beleid, monetair beleid
+  europese 5 matches: Europese records
+  financiën 5 matches: overheidsfinanciën
+  politieke 5 matches: vluchtelingen, politieke moorden, politieke programma's, politieke partijen
+  auto's 4 matches: elektrische auto's, auto's
+  bier 4 matches: bier
+  bijna 4 matches: bijna-doodervaringen
+  concurrentie 4 matches: concurrentie
+  economie 4 matches: economie
+  fietsen 4 matches: elektrische fietsen, fietsen
+  kort 4 matches: processen
+  onderzoek 4 matches: medisch onderzoek, forensisch onderzoek, prenataal onderzoek, oceanografie
+  partijen 4 matches: politieke partijen
+  verkeer 4 matches: verkeer
+  weg 4 matches: wegenbouw, waterbouw
+  contracten 3 matches: overeenkomsten
+  hart 3 matches: hart- en vaatziekten
+  justitie 3 matches: justitie, gerechtsgebouwen
+  kind 3 matches: rechten van het kind
+  politiek 3 matches: politiek
+  prijzen 3 matches: prijzen, onderscheidingen, culturele prijzen, literaire prijzen, medailles, wetenschappelijke prijzen
+  water 3 matches: water
+  wethouders 3 matches: wethouders
+  wonen 3 matches: huisvesting
+
+
+Record oai:beeldengeluid.nl:Expressie:4140046
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4217004
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:79993
+ Manual terms:jacht, scheepvaart, visserij, vissers, zoogdieren
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4212491
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4212997
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4193231
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213574
+ Manual terms:joodse religie, religieuze diensten, synagogen Found terms
+  dienst 3 matches: dienstplicht
+  diensten 3 matches: inlichtingendiensten
+  mensen 3 matches: lange mensen, dikke mensen
+  orthodoxe 3 matches: oosterse kerken
+  pijn 3 matches: pijn
+  wilde 3 matches: wilde zwijnen
+
+
+Record oai:beeldengeluid.nl:Expressie:4122334
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4216881
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4213151
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4209327
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:220403
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4217301
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4208791
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4214161
+ Manual terms:imago, kinderarbeid, kleding, kledingindustrie, liefdadigheid, processen, textielindustrie, veiligheid, veiligheidsbeleid, vrouwen Found terms
+  fabrieken 7 matches: fabrieken
+  mensen 6 matches: lange mensen, dikke mensen
+  wilde 6 matches: wilde zwijnen
+  eerste 5 matches: EHBO
+  amerikaanse 3 matches: Latijns-Amerikaanse dans, Latijns-Amerikaanse muziek
+  middelbare 3 matches: voortgezet onderwijs
+
+
+Record oai:beeldengeluid.nl:Expressie:4209234
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:25339
+ Manual terms:bevolking, boeren, landbouw, oogsten, platteland
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4217541
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:1026813
+ Manual terms:poppentheater
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:122440
+ Manual terms:armoede, daklozen
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:110663
+ Manual terms:vertalers
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4145414
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4169074
+ Manual terms:christendom, humanitaire hulp, vluchtelingen, vrouwen
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Expressie:4192771
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Reeks:394451
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927555
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:191330
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927585
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Selectie:94927578
+ Manual terms:gladheid, sneeuw
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Werk:354392
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Reeks:395962
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Werk:352915
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Realisatie:357825
+ Manual terms:leeftijdsgroepen, levensstijl, ouderen
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Werk:39361
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Reeks:41261
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Realisatie:39841
+ No manual terms
+ No extracted terms
+
+
+Record oai:beeldengeluid.nl:Werk:356915
+ No manual terms
+ No extracted terms
+
+

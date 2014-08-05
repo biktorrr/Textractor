@@ -27,6 +27,8 @@ public class TermFinder {
 
 
 	private String index;
+	private String searchType = "searchForStringInCSOnderwerpen"; 	// parameter: set the type of ES searcher (one of: searchForString, searchForPrefLabel, 
+													// searchForStringFuzzy, searchForStringInCSOnderwerpen etc
 
 	public TermFinder(){
 
@@ -37,8 +39,13 @@ public class TermFinder {
 
 	public JSONArray findTerm(ElasticGTAASearcher es, String searchString)  {
 		JSONArray hitshits = new JSONArray();
-		//System.out.println(searchString); System.out.flush();
-		String esJSONString = es.searchForString(searchString);
+		String esJSONString = "";
+		if(searchType=="searchForString"){ esJSONString = es.searchForString(searchString);}
+		else if(searchType=="searchForPrefLabel"){ esJSONString = es.searchForPrefLabel(searchString);}
+		else if(searchType=="searchForStringFuzzy"){ esJSONString = es.searchForStringFuzzy(searchString);}
+		else if(searchType=="searchForStringInCSOnderwerpen"){ esJSONString = es.searchForStringInCS(searchString, "Onderwerpen");}
+		else { esJSONString = es.searchForString(searchString);} //default = search for string
+		
 			try {
 				JSONObject esJsonObject;
 				esJsonObject = (JSONObject) JSONValue.parseWithException(esJSONString);
@@ -46,7 +53,7 @@ public class TermFinder {
 				hitshits = (JSONArray) hits.get("hits");
 				
 			} catch (ParseException  e) {
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 
 		return hitshits;

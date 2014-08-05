@@ -33,7 +33,7 @@ public class Textractor {
 	private static String bg_oai_server = "http://integrator.beeldengeluid.nl/search_service_rs/oai/";
 	private static ArrayList<String> stopwords;
 	
-	private static int minFreq = 5; // minimum frequency for a token to be added to the tokenlist
+	private static int minFreq = 3; // minimum frequency for a token to be added to the tokenlist
 	private static double minScore= 3.0; // minimum score for a GTAA match 
 
 

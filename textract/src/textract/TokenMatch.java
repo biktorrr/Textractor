@@ -1,6 +1,9 @@
 package textract;
 
+import java.util.ArrayList;
+
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class TokenMatch{
 	 public String token;
@@ -17,8 +20,26 @@ public class TokenMatch{
 		 frequency = f;
 	 }
 	 
-	 public String toString(){
-		 return token + " " + Integer.toString(frequency) + " --> " + gtaaMatches.toString();
+	 // print the whole Jsonarray
+	 public String toStringFull(){
+		 return token + " " + Integer.toString(frequency) + " matches: " + gtaaMatches.toString();
 		 
+	 }
+	 
+	 // only preflabels matches
+	 public String toStringPL(){
+		 String returnString =  token + " " + Integer.toString(frequency);
+		 for (int i=0;i<gtaaMatches.size();i++){
+			 
+			 if (i>0){returnString += ", ";}
+			 else {returnString += " matches: ";}
+			 String pl =  (String) ((JSONObject) ((JSONObject) gtaaMatches.get(i)).get("_source")).get("preflabel");
+			 returnString += pl;
+		 }			 
+		 return  returnString;		 
+	 }
+	 
+	 public String toString(){
+		 return toStringPL();
 	 }
 }

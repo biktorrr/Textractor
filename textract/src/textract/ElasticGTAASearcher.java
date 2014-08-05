@@ -17,9 +17,11 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.common.xcontent.XContentFactory;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.FilterBuilder;
 import org.elasticsearch.index.query.FilterBuilders;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.search.MatchQuery;
 import org.elasticsearch.node.Node;
 
 
@@ -84,17 +86,23 @@ public class ElasticGTAASearcher {
 		return response.toString();	
 	}	
 	
+	
 	//search in one Concept Scheme
-	// doesnt work
+	//curl -XPOST 'localhost:9200/gtaa/_search?pretty' -d '{  "query": {    "bool": 
+	//      {      "must": [        { "match": { "_all": "banken" } },        { "match": { "conceptScheme": "Onderwerpen" } }      ]    }}}'
+
+	// TODO: doesnt work
 	public String searchForStringInCS(String searchString, String conceptScheme) {
 		// remove namespace
+		BoolQueryBuilder qb = QueryBuilders
+                .boolQuery()
+				 .must(QueryBuilders.matchQuery("_all", searchString))
+				 .must(QueryBuilders.matchQuery("conceptScheme",conceptScheme))
+
+				 ;
+		
 		SearchResponse response = client.prepareSearch(index)
-			        .setQuery(QueryBuilders.filteredQuery(QueryBuilders.matchAllQuery(), 
-			        		FilterBuilders.andFilter(
-			        				FilterBuilders.termFilter("preflabel", searchString),
-			        				FilterBuilders.termFilter("altlabel", "")
-			        				)
-			        				))     
+			        .setQuery(qb)   
 			        .execute()
 			        .actionGet();		
 		return response.toString();	
@@ -138,11 +146,11 @@ public class ElasticGTAASearcher {
 	public static void main(String[] args) {
 
 		ElasticGTAASearcher es = new ElasticGTAASearcher();
-		System.out.println(es.searchForString("-"));
-		System.out.println(es.searchForString("iets anders"));
+		//System.out.println(es.searchForString("banken"));
+		//System.out.println(es.searchForString("iets anders"));
 		//System.out.println(es.searchForPrefLabel("personen"));
 		//System.out.println(es.searchForStringFuzzy("personen"));
-		//System.out.println(es.searchForStringInCS("personen","vermissingen"));
+		System.out.println(es.searchForStringInCS("banken","Onderwerpen"));
 		
 	}
 }

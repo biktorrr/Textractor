@@ -6,9 +6,10 @@ import java.util.ArrayList;
 public class ImmixRecord {
 	
 	private ArrayList<String> manTerms; // the manual terms (if any)
-	private ArrayList<TokenMatch> tokenMatches;
-	private String identifier;
-	
+	private ArrayList<TokenMatch> tokenMatches; // matching tokens 
+	private String identifier; // OAI identifier of the record
+
+	private int minMatches = 1; // parameter: minimum no matches to be found to be printed
 
 	public ImmixRecord() {
 		
@@ -36,7 +37,10 @@ public class ImmixRecord {
 		if (tokenMatches.size() > 0) { 
 			result += " Found terms";
 			for(int j = 0;j<tokenMatches.size();j++){	
-				result+= "\n  " + tokenMatches.get(j).toString();
+				// only include when matches are found (minMatches)
+				if(tokenMatches.get(j).gtaaMatches.size() >= minMatches){
+					result+= "\n  " + tokenMatches.get(j).toString();
+				}
 			}
 		}
 	
