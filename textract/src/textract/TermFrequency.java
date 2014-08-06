@@ -24,7 +24,7 @@ public class TermFrequency {
 	
 	
 	public HashMap<String, Integer> readwfFile (String fileName) throws IOException{
-		System.out.print("loading term frequencies..");
+		System.out.print("Loading term frequencies..");
 		HashMap<String,Integer> map = new HashMap<String, Integer>();
 		FileReader fileReader = new FileReader(fileName);
 	    BufferedReader bufferedReader = new BufferedReader(fileReader);

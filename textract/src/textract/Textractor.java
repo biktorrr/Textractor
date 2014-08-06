@@ -1,14 +1,27 @@
 package textract;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import org.dom4j.Branch;
+import org.dom4j.Comment;
 import org.dom4j.Document;
+import org.dom4j.DocumentType;
 import org.dom4j.Element;
+import org.dom4j.InvalidXPathException;
+import org.dom4j.Node;
+import org.dom4j.ProcessingInstruction;
+import org.dom4j.QName;
+import org.dom4j.Visitor;
+import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
@@ -17,6 +30,7 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
+import org.xml.sax.EntityResolver;
 
 import se.kb.oai.OAIException;
 import se.kb.oai.pmh.ErrorResponseException;
@@ -30,21 +44,21 @@ import textract.WordFrequencyCounter.Word;
 
 public class Textractor {
 
+	private static String outputFileName = "textractor_output.txt"; // where to write the results to
 	private static String bg_oai_server = "http://integrator.beeldengeluid.nl/search_service_rs/oai/";
+
+	
 	private  ArrayList<String> stopwords; // list of stopwords
 	
-	private static int minFreq = 3; // minimum frequency for a token to be added to the tokenlist
+	private static int minFreq = 2; // minimum frequency for a token to be added to the tokenlist
 	private static double minScore= 3.0; // minimum score for a GTAA match 
 
 	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
-	// OAI list record parameters
-	private static String from = "2014-02-03T12:00:00Z"; 
-	private static String until = "2014-02-03T14:00:00Z";
-	private static String set = null;
-	private static String metadataprefix  = "iMMix"; 
+
 	
 
+	
 	public Textractor(){
 		stopwords = new StopWords().getStopwords();
 	}
@@ -139,31 +153,13 @@ public class Textractor {
 	
 	// input: ES client and oai identifier string
 	// output: list of tokenmatches for one item
-	public  ArrayList<TokenMatch> getTokenMatches(ElasticGTAASearcher es, String oaiIdentifier) throws ParseException{
-		System.out.println("Retrieving tokens from record " + oaiIdentifier);
-		String x = getMetadataForOAIRecord(oaiIdentifier);
-		Word[] frequency = new WordFrequencyCounter().getFrequentTokensFromString(x);
+	public  ArrayList<TokenMatch> getTokenMatches(ElasticGTAASearcher es, ImmixRecord oneRecord) throws ParseException{
+		System.out.println("Retrieving tokens from record " + oneRecord.getIdentifier());
+		Word[] frequency = new WordFrequencyCounter().getFrequentTokensFromString(oneRecord.getTTString());
 		ArrayList<Word> wordlist = removeUnwantedWords(frequency); // remove stopwords and such
 		System.out.print(" Matching to GTAA");
 		ArrayList<TokenMatch> result = getTermsForFreqList(es, wordlist);
 		return result;
-	}
-	
-	// input: some demarcation of items
-	// output: list of items 
-	public RecordsList getOAIItemsForTimePeriod(String from, String until, String set) throws OAIException{
-		QueryBuilder builder = new QueryBuilder(bg_oai_server);
-		SAXReader reader = new SAXReader();
-		try{
-			String query = builder.buildListRecordsQuery(metadataprefix, from, until, set);
-			Document document = reader.read(query);
-			return new RecordsList(document);
-			} catch (ErrorResponseException e) {
-				throw e;
-			} catch (Exception e) {
-				throw new OAIException(e);
-		}
-	
 	}
 	
 	
@@ -178,25 +174,46 @@ public class Textractor {
 			
 			ArrayList<ImmixRecord> endResult = new ArrayList<ImmixRecord>();
 			
-
-			
 			ElasticGTAASearcher gtaaES = new ElasticGTAASearcher();
 			
 			// get records from OAI
 			try {
-				System.out.println("Retrieving records from OAI server");
-				RecordsList rl = gogo.getOAIItemsForTimePeriod(from, until, set);
-				List<Record> recordList = rl.asList();
-				ResumptionToken rt  = rl.getResumptionToken(); //TODO: go on with new resumption token
+				System.out.print("Retrieving records from OAI server.");
+				
+				OAIHarvester myHarvester = new OAIHarvester();
+				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod("2014-02-01T08:00:00Z", "2014-02-04T22:00:00Z", null);
+				
+				
+				System.out.println("done found" + recordList.size() + "records");
+
 				
 				// Loop through records
 				System.out.println("Looping through records");
 				for (int i=0; i<recordList.size();i++){
+
+					//create new immixRecord object with this identifier
 					String recordid = recordList.get(i).getHeader().getIdentifier();
-					System.out.println(Integer.toString(i) + ": " + recordid);
-					ArrayList<TokenMatch> result = gogo.getTokenMatches(gtaaES, recordid);
+					ImmixRecord ir = new ImmixRecord(recordid); 	
+
+					// get the tt stuff
+					System.out.print(Integer.toString(i) + ": " + recordid + " >> ");
+					String ttString = gogo.getMetadataForOAIRecord(recordid);
+					ir.setTTString(ttString);	
+					
+					// get the manual terms
 					ArrayList<String> manTerms = gogo.getExistingTerms(recordid);
-					ImmixRecord ir = new ImmixRecord(manTerms, result, recordid);
+					ir.setManTerms(manTerms);
+						
+					if ( ttString.length()>0) {		
+						// get the tokenmatches
+						ArrayList<TokenMatch> resultTM = gogo.getTokenMatches(gtaaES, ir);
+						ir.setTokenMatches(resultTM);
+					}
+					else {
+						System.out.println(" no tt found");
+						
+					}
+					
 
 					endResult.add(ir);
 				}
@@ -205,9 +222,9 @@ public class Textractor {
 			}
 			// output to file
 			PrintWriter writer;
-			writer = new PrintWriter("textractor_output.txt", "UTF-8");		
+			writer = new PrintWriter(outputFileName, "UTF-8");		
 			for(int j = 0;j<endResult.size();j++){	
-					writer.println(endResult.get(j).toString());
+					writer.print(endResult.get(j).toStringBoth());
 			}
 			writer.close();
 			gtaaES.closeClient();
