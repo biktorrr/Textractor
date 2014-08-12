@@ -4,54 +4,33 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import org.dom4j.Branch;
-import org.dom4j.Comment;
-import org.dom4j.Document;
-import org.dom4j.DocumentType;
+import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.InvalidXPathException;
-import org.dom4j.Node;
-import org.dom4j.ProcessingInstruction;
-import org.dom4j.QName;
-import org.dom4j.Visitor;
-import org.dom4j.XPath;
-import org.dom4j.io.SAXReader;
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.settings.ImmutableSettings;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
-import org.xml.sax.EntityResolver;
 
 import se.kb.oai.OAIException;
-import se.kb.oai.pmh.ErrorResponseException;
 import se.kb.oai.pmh.OaiPmhServer;
-import se.kb.oai.pmh.QueryBuilder;
 import se.kb.oai.pmh.Record;
-import se.kb.oai.pmh.RecordsList;
-import se.kb.oai.pmh.ResumptionToken;
 import textract.WordFrequencyCounter.Word;
 
 
 public class Textractor {
 
-	private static String outputFileName = "textractor_output.txt"; // where to write the results to
+	private static String outputFileName = "textractor_test_"; // where to write the results to
 	private static String bg_oai_server = "http://integrator.beeldengeluid.nl/search_service_rs/oai/";
 
 	
 	private  ArrayList<String> stopwords; // list of stopwords
-	
+	private static String from  = "2014-02-10T18:00:00Z";
+	private static String until  = "2014-02-11T18:00:00Z";
 	private static int minFreq = 2; // minimum frequency for a token to be added to the tokenlist
-	private static double minScore= 3.0; // minimum score for a GTAA match 
+	private static double minScore= 3.5; // minimum score for a GTAA match 
 
 	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
@@ -166,7 +145,8 @@ public class Textractor {
 	
 	public static void main(String[] args) throws ParseException {
 		try {
-			
+			PrintWriter writer;
+			writer = new PrintWriter(outputFileName + "from_" + from.replaceAll(":","p") + "_until_" + until.replaceAll(":","p") + ".txt", "UTF-8");			
 			Textractor gogo = new Textractor();
 			
 			gogo.stopwords = new StopWords().getStopwords();
@@ -181,7 +161,7 @@ public class Textractor {
 				System.out.print("Retrieving records from OAI server.");
 				
 				OAIHarvester myHarvester = new OAIHarvester();
-				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod("2014-02-01T08:00:00Z", "2014-02-04T22:00:00Z", null);
+				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod(from, until, null);
 				
 				
 				System.out.println("done found" + recordList.size() + "records");
@@ -193,36 +173,41 @@ public class Textractor {
 
 					//create new immixRecord object with this identifier
 					String recordid = recordList.get(i).getHeader().getIdentifier();
-					ImmixRecord ir = new ImmixRecord(recordid); 	
-
-					// get the tt stuff
-					System.out.print(Integer.toString(i) + ": " + recordid + " >> ");
-					String ttString = gogo.getMetadataForOAIRecord(recordid);
-					ir.setTTString(ttString);	
 					
-					// get the manual terms
-					ArrayList<String> manTerms = gogo.getExistingTerms(recordid);
-					ir.setManTerms(manTerms);
+					// only do expressions?
+					if (recordid.contains("Expressie")|| recordid.contains("Selectie")){ //TODO: is this ok? 
+						ImmixRecord ir = new ImmixRecord(recordid); 	
+				
+						// get the tt stuff
+						System.out.print(Integer.toString(i) + ": " + recordid + " >> ");
+						String ttString = gogo.getMetadataForOAIRecord(recordid);
+						ir.setTTString(ttString);	
 						
-					if ( ttString.length()>0) {		
-						// get the tokenmatches
-						ArrayList<TokenMatch> resultTM = gogo.getTokenMatches(gtaaES, ir);
-						ir.setTokenMatches(resultTM);
+						// get the manual terms
+						ArrayList<String> manTerms = gogo.getExistingTerms(recordid);
+						ir.setManTerms(manTerms);
+							
+						if ( ttString.length()>0) {		
+							// get the tokenmatches
+							ArrayList<TokenMatch> resultTM = gogo.getTokenMatches(gtaaES, ir);
+							ir.setTokenMatches(resultTM);
+							
+							//get the ner results
+							NERrer nerrer = new NERrer();
+							ArrayList<NamedEntity> nes = nerrer.getNamedEntitiesFromCLTL(ttString);
+							ir.setNEList(nes);
+						}
+						else {
+							System.out.println(" no tt found");
+						}
+						endResult.add(ir);
 					}
-					else {
-						System.out.println(" no tt found");
-						
-					}
-					
-
-					endResult.add(ir);
 				}
-			} catch (OAIException e) {
+			} catch (OAIException | IOException | DocumentException e) {
 				e.printStackTrace();
 			}
 			// output to file
-			PrintWriter writer;
-			writer = new PrintWriter(outputFileName, "UTF-8");		
+ 
 			for(int j = 0;j<endResult.size();j++){	
 					writer.print(endResult.get(j).toStringBoth());
 			}

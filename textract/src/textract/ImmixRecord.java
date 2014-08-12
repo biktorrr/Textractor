@@ -10,6 +10,7 @@ public class ImmixRecord {
 	private ArrayList<TokenMatch> tokenMatches; // matching tokens 
 	private String identifier; // OAI identifier of the record
 
+	private ArrayList<NamedEntity> NEList ; // list of Named Entity objects
 	private int minMatches = 1; // parameter: minimum no matches to be found to be printed
 
 	public ImmixRecord() {
@@ -24,6 +25,7 @@ public class ImmixRecord {
 		ttString = "tbd"; //default
 		manTerms = new ArrayList<String>();
 		tokenMatches = new ArrayList<TokenMatch>();
+		
 	}
 	
 	// constructor
@@ -34,13 +36,13 @@ public class ImmixRecord {
 		ttString = "tbd"; //default
 	}
 	
-	public String toString(){
+	public String toStringAll(){
 		String result = ""; 
 		
 		result += "Record " + identifier;
 		
 		if (manTerms.size() > 0) { 
-			result += "\n Manual terms:";
+			result += "\n Manual terms: ";
 			for(int j = 0;j<manTerms.size();j++){
 				if (j>0) { result+= ", ";}	
 				result+= manTerms.get(j);
@@ -59,7 +61,17 @@ public class ImmixRecord {
 			}
 		}
 	
-		else result += "\n No extracted terms";
+		else result += "\n No extracted terms\n";
+	
+		if (NEList.size() > 0) { 
+			result += "\n Named Entities: ";
+			for(int j = 0;j<NEList.size();j++){
+				if (j>0) { result+= ", ";}	
+				result+= "["+ NEList.get(j).neString + " | "+ NEList.get(j).neClass + "]";
+				
+			}
+		}
+		else result += "\n No Named Entities";
 		
 		result+= "\n\n";
 		return result;
@@ -67,7 +79,7 @@ public class ImmixRecord {
 	
 	// print only if there both manual terms and some teletekst content
 	public String toStringBoth(){
-		if(tokenMatches.size()>0 && ttString.length()>0) {
+		if(manTerms.size()>0 && ttString.length()>0) {
 			String result = ""; 
 			
 			result += "Record " + identifier;
@@ -92,7 +104,17 @@ public class ImmixRecord {
 				}
 			}
 		
-			else result += "\n No extracted terms";
+			else result += "\n No extracted terms\n";
+			
+			if (NEList.size() > 0) { 
+				result += "\n Named Entities: ";
+				for(int j = 0;j<NEList.size();j++){
+					if (j>0) { result+= ", ";}	
+					result+= "["+ NEList.get(j).neString + " | "+ NEList.get(j).neClass + "]";
+					
+				}
+			}
+			else result += "\n No Named Entities";
 			
 			result+= "\n\n";
 			return result;}
@@ -127,6 +149,16 @@ public class ImmixRecord {
 
 	public void setTTString(String ttString) {
 		this.ttString = ttString;
+	}
+
+
+	public ArrayList<NamedEntity> getNEList() {
+		return NEList;
+	}
+
+
+	public void setNEList(ArrayList<NamedEntity> nEList) {
+		NEList = nEList;
 	}
 
 }

@@ -18,8 +18,8 @@ public class OAIHarvester {
 
 	// OAI list record parameters
 	private static String bg_oai_server = "http://integrator.beeldengeluid.nl/search_service_rs/oai/";
-	private static String defaultfrom = "2014-02-01T08:00:00Z"; 
-	private static String defaultuntil = "2014-02-03T23:00:00Z";
+	private static String defaultfrom = "2014-01-02T08:00:00Z"; 
+	private static String defaultuntil = "2014-01-03T23:00:00Z";
 	private static String defaultset = null;
 	private static String metadataprefix  = "iMMix"; 
 	
@@ -48,10 +48,9 @@ public class OAIHarvester {
 	public RecordsList getOAIItemsForRT(ResumptionToken rt) throws OAIException, DocumentException{
 		QueryBuilder builder = new QueryBuilder(bg_oai_server);
 		SAXReader reader = new SAXReader();
-
-			String query = builder.buildListRecordsQuery(rt);
-			Document document = reader.read(query);
-			return new RecordsList(document);
+		String query = builder.buildListRecordsQuery(rt);
+		Document document = reader.read(query);
+		return new RecordsList(document);
 			
 			
 	
@@ -61,7 +60,8 @@ public class OAIHarvester {
 			RecordsList recList = getOAIItemsForTimePeriodStart(from, until, set);
 			List<Record> returnList = recList.asList();
 			ResumptionToken restoken  = recList.getResumptionToken(); 
-			
+			System.out.println(recList.getResponseDate() + " " + restoken.getExpirationDate() + " " + restoken.getId());
+
 			boolean more = true;
 			// moar records
 			while (restoken !=null & more==true){
@@ -69,8 +69,9 @@ public class OAIHarvester {
 				try{
 					recList =  getOAIItemsForRT(restoken);
 					returnList.addAll(recList.asList());
-					System.out.print(".");
+					//System.out.print(".");
 					restoken  = recList.getResumptionToken();
+					System.out.println(recList.getResponseDate() + " " + restoken.getExpirationDate() + " " + restoken.getId());
 				}
 				catch (Exception e){
 					e.printStackTrace();	
