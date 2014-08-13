@@ -27,8 +27,8 @@ public class Textractor {
 
 	
 	private  ArrayList<String> stopwords; // list of stopwords
-	private static String from  = "2014-02-10T18:00:00Z";
-	private static String until  = "2014-02-11T18:00:00Z";
+	private static String from  = "2014-02-11T18:00:00Z";
+	private static String until  = "2014-02-13T21:00:00Z";
 	private static int minFreq = 2; // minimum frequency for a token to be added to the tokenlist
 	private static double minScore= 3.5; // minimum score for a GTAA match 
 
@@ -200,6 +200,7 @@ public class Textractor {
 						else {
 							System.out.println(" no tt found");
 						}
+						ir.consolidateGTAATerms();
 						endResult.add(ir);
 					}
 				}
@@ -209,7 +210,7 @@ public class Textractor {
 			// output to file
  
 			for(int j = 0;j<endResult.size();j++){	
-					writer.print(endResult.get(j).toStringBoth());
+					writer.print(endResult.get(j).toString());
 			}
 			writer.close();
 			gtaaES.closeClient();

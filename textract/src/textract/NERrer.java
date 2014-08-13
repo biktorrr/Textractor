@@ -34,13 +34,24 @@ public class NERrer {
 	public ArrayList<NamedEntity> getGTAANES (ElasticGTAASearcher gtaaES, String inputString) throws IOException, DocumentException{
 		System.out.print(" Recognizing Named Entities..");
 		TermFinder tf = new TermFinder();
-		ArrayList<NamedEntity> result = getNamedEntitiesFromCLTL( inputString);
+		ArrayList<NamedEntity> result = getNamedEntitiesFromCLTL(inputString);
 		if (result.size()>0){
 			System.out.println("..some found.");
 			for(int i=0;i<result.size();i++){
 				NamedEntity ne = result.get(i);
-				JSONArray matches= tf.matchPersonNames(ne.neString, gtaaES, minScore); 
-				
+				JSONArray matches = new JSONArray();
+				if (ne.neClass.equalsIgnoreCase("PERSON")) {
+					matches = tf.matchPersonNames(ne.neString, gtaaES, minScore); 
+				}
+				else if (ne.neClass.equalsIgnoreCase("LOCATION")) {
+					matches= tf.matchGeo(ne.neString, gtaaES, minScore); 
+				}
+				else if (ne.neClass.equalsIgnoreCase("ORGANIZATION")) {
+					//TODO: what here? 
+				}
+				else if (ne.neClass=="MISC") {
+					//TODO: what here? 
+				}
 				ne.gtaaMatches = matches;
 			}
 			
@@ -214,6 +225,7 @@ public class NERrer {
 		String test = "Hallo, mijn naam is Victor de Boer en ik woon in de mooie stad Haarlem. Ik werk nu bij het Nederlands Instituut voor Beeld en Geluid in Hilversum. Hiervoor was ik werkzaam bij de Vrije Universiteit. ";
 		try {
 			ArrayList result = gogo.getNamedEntitiesFromCLTL(test);
+			System.out.println(result.toString());
 		} catch (IOException | DocumentException e ) {
 			e.printStackTrace();
 				}

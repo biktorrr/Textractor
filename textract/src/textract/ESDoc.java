@@ -8,4 +8,8 @@ public class ESDoc {
 	public String conceptSchemes;
 	public String uri;
 
+	public String toString(){
+		return "gtaa:" + preflabel;
+	}
+	
 }
