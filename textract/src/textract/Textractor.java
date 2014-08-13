@@ -194,7 +194,7 @@ public class Textractor {
 							
 							//get the ner results
 							NERrer nerrer = new NERrer();
-							ArrayList<NamedEntity> nes = nerrer.getNamedEntitiesFromCLTL(ttString);
+							ArrayList<NamedEntity> nes = nerrer.getGTAANES(gtaaES, ttString);
 							ir.setNEList(nes);
 						}
 						else {

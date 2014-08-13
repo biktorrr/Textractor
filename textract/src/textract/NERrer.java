@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,22 +15,49 @@ import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
 
 public class NERrer {
 
+	//default minimun Elasticsearch score for NE matching 
+	double minScore = 3.5;
+	
 	// class to perform Named Entity Recognition on a String. 
 	public NERrer() {
 	}
 
    
-   
+   // super-method, get named entity objects, including matching gtaa concepts
+	public ArrayList<NamedEntity> getGTAANES (ElasticGTAASearcher gtaaES, String inputString) throws IOException, DocumentException{
+		System.out.print(" Recognizing Named Entities..");
+		TermFinder tf = new TermFinder();
+		ArrayList<NamedEntity> result = getNamedEntitiesFromCLTL( inputString);
+		if (result.size()>0){
+			System.out.println("..some found.");
+			for(int i=0;i<result.size();i++){
+				NamedEntity ne = result.get(i);
+				JSONArray matches= tf.matchPersonNames(ne.neString, gtaaES, minScore); 
+				
+				ne.gtaaMatches = matches;
+			}
+			
+		}
+		else {
+			System.out.println("..none found.");}
+		return result;
+	}
+	
+
+	
+	
 	
 	//get Named Entities from CLTL web services
-	public ArrayList<NamedEntity> getNamedEntitiesFromCLTL(String inputString) throws IOException, DocumentException{
+	public ArrayList<NamedEntity> getNamedEntitiesFromCLTL( String inputString) throws IOException, DocumentException{
 		ArrayList<NamedEntity> result = new ArrayList<NamedEntity>();
-		System.out.print(" Recognizing Named Entities..");
-		
+
 			String kafResult = getTreeKafFromCLTL(inputString);
 			String nerResult = getNerResultFromCLTL(kafResult);
 			
@@ -54,8 +80,7 @@ public class NERrer {
 				result.add(ne);
 			}
 			
-		if (result.size()>0){System.out.println("..some done.");}
-		else System.out.println("..none found.");
+
 		return result;
 	}
 	
@@ -189,7 +214,6 @@ public class NERrer {
 		String test = "Hallo, mijn naam is Victor de Boer en ik woon in de mooie stad Haarlem. Ik werk nu bij het Nederlands Instituut voor Beeld en Geluid in Hilversum. Hiervoor was ik werkzaam bij de Vrije Universiteit. ";
 		try {
 			ArrayList result = gogo.getNamedEntitiesFromCLTL(test);
-		
 		} catch (IOException | DocumentException e ) {
 			e.printStackTrace();
 				}

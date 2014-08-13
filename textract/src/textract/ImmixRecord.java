@@ -7,7 +7,13 @@ public class ImmixRecord {
 	
 	private ArrayList<String> manTerms; // the manual terms (if any)
 	private String ttString; // all teletekst content
-	private ArrayList<TokenMatch> tokenMatches; // matching tokens 
+	private ArrayList<TokenMatch> tokenMatches; // tokens and matching gtaa terms TODO: replace by thing below
+	 public ArrayList<ESDoc> allTokenMatches ; // list of final matches based on tokens
+	 public ArrayList<ESDoc> allPNMatches ; // list of final matches based on Named Entities
+
+	
+	
+	
 	private String identifier; // OAI identifier of the record
 
 	private ArrayList<NamedEntity> NEList ; // list of Named Entity objects
@@ -67,7 +73,7 @@ public class ImmixRecord {
 			result += "\n Named Entities: ";
 			for(int j = 0;j<NEList.size();j++){
 				if (j>0) { result+= ", ";}	
-				result+= "["+ NEList.get(j).neString + " | "+ NEList.get(j).neClass + "]";
+				result+= NEList.get(j).toString() + " ";
 				
 			}
 		}
@@ -110,7 +116,7 @@ public class ImmixRecord {
 				result += "\n Named Entities: ";
 				for(int j = 0;j<NEList.size();j++){
 					if (j>0) { result+= ", ";}	
-					result+= "["+ NEList.get(j).neString + " | "+ NEList.get(j).neClass + "]";
+					result+= NEList.get(j).toString() + " ";
 					
 				}
 			}

@@ -79,6 +79,21 @@ public class TermFinder {
 		return removeLowScores(result, minScore);		
 	}
 	
+	public JSONArray  matchPersonNames (String inputString, ElasticGTAASearcher gtaaES, double minScore){
+		JSONArray hitshits = new JSONArray();
+		String esJSONString = gtaaES.searchForStringInCS(inputString, "Persoonsnamen");
+		
+		try {
+			JSONObject esJsonObject;
+			esJsonObject = (JSONObject) JSONValue.parseWithException(esJSONString);
+			JSONObject hits = (JSONObject) esJsonObject.get("hits");
+			hitshits = (JSONArray) hits.get("hits");
+			
+		} catch (ParseException  e) {
+			e.printStackTrace();
+		}
+		return removeLowScores(hitshits, minScore);
+	}
 	
 	public static void main(String[] args) throws ParseException {
 		TermFinder tf = new TermFinder();

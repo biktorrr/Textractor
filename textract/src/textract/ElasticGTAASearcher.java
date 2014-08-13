@@ -26,6 +26,7 @@ import org.elasticsearch.node.Node;
 
 
 // Class for searching for terms in GTAA. In this case it is done using Elasticsearch
+
 public class ElasticGTAASearcher {
 	private static Client client; 
 	
@@ -52,66 +53,12 @@ public class ElasticGTAASearcher {
 		return client;
 	}
 
-	public String searchForPrefLabel(String searchString) {
-		SearchResponse response = client.prepareSearch(index)
-			      //  .setTypes("type1", "type2")
-			       // .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-			        .setQuery(QueryBuilders.termQuery("preflabel", searchString))             // Query
-			        .execute()
-			        .actionGet();		
-		return response.toString();	
-	}
-	
-	public String searchForString(String searchString) {
-		try{
-			SearchResponse response = client.prepareSearch(index)	
-			        .setQuery(QueryBuilders.queryString(searchString))             // Query
-			        .execute()
-			        .actionGet();		
-		return response.toString();
-		}
-		catch (Exception e){
-			//e.printStackTrace();
-			return "{[]}";
-		}
-	}	
-	
-	
-	//fuzzy
-	public String searchForStringFuzzy(String searchString) {
-		SearchResponse response = client.prepareSearch(index)
-			        .setQuery(QueryBuilders.fuzzyQuery("preflabel", searchString))             // Query
-			        .execute()
-			        .actionGet();		
-		return response.toString();	
-	}	
-	
-	
-	//search in one Concept Scheme
-	//curl -XPOST 'localhost:9200/gtaa/_search?pretty' -d '{  "query": {    "bool": 
-	//      {      "must": [        { "match": { "_all": "banken" } },        { "match": { "conceptScheme": "Onderwerpen" } }      ]    }}}'
 
-	// TODO: doesnt work
-	public String searchForStringInCS(String searchString, String conceptScheme) {
-		// remove namespace
-		BoolQueryBuilder qb = QueryBuilders
-                .boolQuery()
-				 .must(QueryBuilders.matchQuery("_all", searchString))
-				 .must(QueryBuilders.matchQuery("conceptScheme",conceptScheme))
-
-				 ;
-		
-		SearchResponse response = client.prepareSearch(index)
-			        .setQuery(qb)   
-			        .execute()
-			        .actionGet();		
-		return response.toString();	
-	}	
+	// ---------------------  SECRET INDEXING METHOD -------------------------------
 	
+	// this method indexes ESDocs, as retrieved from the GTAA OAI interface
 	public void indexESDocs(ArrayList<ESDoc> esdocs){
 		BulkRequestBuilder bulkRequest = client.prepareBulk();
-	
-		
 		for( int i = 0 ; i< esdocs.size();i++){
 			ESDoc ed = esdocs.get(i);
 			String myuri = ed.uri.replaceAll("/", "_");
@@ -143,6 +90,63 @@ public class ElasticGTAASearcher {
 	}
 	
 	
+	
+	// ---------------------- SEARCHING METHODS ----------------------------	
+	
+	// preflabel only
+	public String searchForPrefLabel(String searchString) {
+		SearchResponse response = client.prepareSearch(index)
+			      //  .setTypes("type1", "type2")
+			       // .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+			        .setQuery(QueryBuilders.termQuery("preflabel", searchString))             // Query
+			        .execute()
+			        .actionGet();		
+		return response.toString();	
+	}
+	
+	// Search for a string in any ES document
+	public String searchForString(String searchString) {
+		try{
+			SearchResponse response = client.prepareSearch(index)	
+			        .setQuery(QueryBuilders.queryString(searchString))             // Query
+			        .execute()
+			        .actionGet();		
+		return response.toString();
+		}
+		catch (Exception e){
+			//e.printStackTrace();
+			return "{[]}";
+		}
+	}	
+	
+	
+	//fuzzy
+	public String searchForStringFuzzy(String searchString) {
+		SearchResponse response = client.prepareSearch(index)
+			        .setQuery(QueryBuilders.fuzzyQuery("preflabel", searchString))             // Query
+			        .execute()
+			        .actionGet();		
+		return response.toString();	
+	}	
+	
+
+	// search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc)
+	public String searchForStringInCS(String searchString, String conceptScheme) {
+		// remove namespace
+		BoolQueryBuilder qb = QueryBuilders
+                .boolQuery()
+				 .must(QueryBuilders.matchQuery("_all", searchString))
+				 .must(QueryBuilders.matchQuery("conceptScheme",conceptScheme))
+				 ;	
+		SearchResponse response = client.prepareSearch(index)
+			        .setQuery(qb)   
+			        .execute()
+			        .actionGet();		
+		return response.toString();	
+	}	
+	
+	
+	
 	public static void main(String[] args) {
 
 		ElasticGTAASearcher es = new ElasticGTAASearcher();
@@ -151,6 +155,7 @@ public class ElasticGTAASearcher {
 		//System.out.println(es.searchForPrefLabel("personen"));
 		//System.out.println(es.searchForStringFuzzy("personen"));
 		System.out.println(es.searchForStringInCS("banken","Onderwerpen"));
-		
+		System.out.println(es.searchForStringInCS("Jan Peter Balkenende","Persoonsnamen"));
+
 	}
 }
