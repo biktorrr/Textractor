@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class Textractor {
 
 	
 	private  ArrayList<String> stopwords; // list of stopwords
-	private static String from  = "2014-02-11T18:00:00Z";
-	private static String until  = "2014-02-13T21:00:00Z";
+	private static String from  = "2014-02-11T12:00:00Z";
+	private static String until  = "2014-02-12T12:00:00Z";
 	private static int minFreq = 2; // minimum frequency for a token to be added to the tokenlist
 	private static double minScore= 3.5; // minimum score for a GTAA match 
 

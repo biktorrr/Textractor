@@ -2,7 +2,6 @@ package textract;
 
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 // internal datastructure for one immixrecord and the resulting extracted terms
