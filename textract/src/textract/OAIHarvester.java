@@ -29,8 +29,6 @@ public class OAIHarvester {
 	public OAIHarvester() {
 	}
 
-	
-
 	// input: some demarcation of items
 	// output: list of OAI records
 	public RecordsList getOAIItemsForTimePeriodStart(String from, String until, String set) throws OAIException{
@@ -85,7 +83,12 @@ public class OAIHarvester {
 					System.out.println(recList.getResponseDate() + " " + fixedrestoken.getExpirationDate() + " " + fixedrestoken.getId());
 				}
 				catch (Exception e){
-					e.printStackTrace();	
+					if (e.getMessage().contains("end of list")){
+						System.out.println("Reached end of List");
+					}
+					else {
+						e.printStackTrace();		
+					}
 					more = false;
 				}
 			}

@@ -26,8 +26,8 @@ public class Textractor {
 
 	
 	private  ArrayList<String> stopwords; // list of stopwords
-	private static String from  = "2014-02-11T12:00:00Z";
-	private static String until  = "2014-02-12T12:00:00Z";
+	private static String from  = "2014-02-12T12:00:00Z";
+	private static String until  = "2014-02-14T12:00:00Z";
 	private static int minFreq = 2; // minimum frequency for a token to be added to the tokenlist
 	private static double minScore= 3.5; // minimum score for a GTAA match 
 
@@ -143,6 +143,7 @@ public class Textractor {
 	
 	
 	public static void main(String[] args) throws ParseException {
+		System.out.println("\n---- Initializing ----\n");
 		try {
 			PrintWriter writer;
 			writer = new PrintWriter(outputFileName + "from_" + from.replaceAll(":","p") + "_until_" + until.replaceAll(":","p") + ".txt", "UTF-8");			
@@ -157,17 +158,17 @@ public class Textractor {
 			
 			// get records from OAI
 			try {
-				System.out.print("Retrieving records from OAI server.");
+				System.out.println("\n---- Retrieving records from OAI server ----\n");
 				
 				OAIHarvester myHarvester = new OAIHarvester();
 				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod(from, until, null);
 				
 				
-				System.out.println("done found" + recordList.size() + "records");
+				System.out.println("Found " + recordList.size() + " records.");
 
 				
 				// Loop through records
-				System.out.println("Looping through records");
+				System.out.println("\n---- Looping through records -----\n");
 				for (int i=0; i<recordList.size();i++){
 
 					//create new immixRecord object with this identifier
@@ -213,7 +214,7 @@ public class Textractor {
 			}
 			writer.close();
 			gtaaES.closeClient();
-			System.out.println("I'm done");
+			System.out.println("\n---- I'm done ----\n");
 			
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
