@@ -21,15 +21,17 @@ import textract.WordFrequencyCounter.Word;
 
 public class Textractor {
 
-	private static String outputFileName = "textractor_test_"; // where to write the results to
-	private static String bg_oai_server = "http://integrator.beeldengeluid.nl/search_service_rs/oai/";
+	private String outputFileName = "textractor_test_"; // where to write the results to
+	private String bg_oai_server = "http://integrator.beeldengeluid.nl/search_service_rs/oai/";
 
 	
-	private  ArrayList<String> stopwords; // list of stopwords
-	private static String from  = "2014-02-12T12:00:00Z";
-	private static String until  = "2014-02-14T12:00:00Z";
-	private static int minFreq = 2; // minimum frequency for a token to be added to the tokenlist
-	private static double minScore= 3.5; // minimum score for a GTAA match 
+	private ArrayList<String> stopwords; // list of stopwords
+	private String from  = "2014-02-15T12:00:00Z";
+	private String until  = "2014-02-20T22:00:00Z";
+	
+	private int minAbsFreq = 2; // minimum frequency for a token to be added to the tokenlist
+	private double minNormFreq	= 5.00E-6;	 // minimum normalized frequency for a token to be added to the tokenlist
+	private double minScore= 3.5; // minimum score for a GTAA match 
 
 	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
@@ -47,13 +49,27 @@ public class Textractor {
 	public ArrayList<Word> removeUnwantedWords (Word[] frequencyTokens){
 		ArrayList<Word> freqAl = new ArrayList<Word>();
         for(Word w:frequencyTokens){
-            if (this.stopwords.contains(w.word) || w.count<minFreq ){
+            if (this.stopwords.contains(w.word) || w.count<minAbsFreq ){
+            	// do nothing
             }
             else {
             	freqAl.add(w);
             }
         }
         return freqAl;
+	}
+	
+	// remove words with lower than threshold normalized word freq from 
+	private ArrayList<TokenMatch> removeCommonWords(ArrayList<TokenMatch> termList, double threshold) {
+		ArrayList<TokenMatch> resultList = new ArrayList<TokenMatch>();
+
+        for(int i=0;i<termList.size();i++){
+        	
+            if (termList.get(i).normfrequency >= threshold){
+            	resultList.add(termList.get(i));
+            }
+        }
+        return resultList;
 	}
 	
 	
@@ -72,16 +88,22 @@ public class Textractor {
 	        tm.gtaaMatches= foundTerm;
 	        tm.token= wordfreq.get(i).word;
 	        int wf =  termfreqFinder.getWordFrequency(tm.token);
-	        tm.normfrequency = (float) tm.frequency / (float) wf; 
+	        tm.normfrequency =  (double) tm.frequency / (double) wf; 
 	        termList.add(tm);
 	        if (i%10 == 0){System.out.print(".");}
 	     }
-		if (termList.size() < 1) System.out.println(" no terms found");
+		
+		ArrayList<TokenMatch> uncommonTerms = removeCommonWords(termList, minNormFreq);
+		
+		if (uncommonTerms.size() < 1) System.out.println(" no uncommon terms found");
 		else System.out.println(" done");
-		return termList;
+		return uncommonTerms;
 	}
 	
 	
+
+
+
 	// this function gets the manually added terms (used to train or evaluate the automated system)
 	public  ArrayList<String> getExistingTerms(String recordID){
 		ArrayList<String> result = new ArrayList<String>();
@@ -140,14 +162,24 @@ public class Textractor {
 		return result;
 	}
 	
-	
+	// input: ES client and oai identifier string
+	// output: list of NGRAM matches for one item
+	public  ArrayList<TokenMatch> getNGramMatches(ElasticGTAASearcher es, ImmixRecord oneRecord, int n) throws ParseException{
+		System.out.println("Retrieving ngrams from record " + oneRecord.getIdentifier());
+		Word[] frequency = new WordFrequencyCounter().getFrequentNGramsFromString(oneRecord.getTTString(),	n);
+		ArrayList<Word> wordlist = removeUnwantedWords(frequency); // remove stopwords and such
+		System.out.print(" Matching Ngrams to GTAA");
+		ArrayList<TokenMatch> result = getTermsForFreqList(es, wordlist);
+		return result;
+	}	
 	
 	public static void main(String[] args) throws ParseException {
 		System.out.println("\n---- Initializing ----\n");
 		try {
-			PrintWriter writer;
-			writer = new PrintWriter(outputFileName + "from_" + from.replaceAll(":","p") + "_until_" + until.replaceAll(":","p") + ".txt", "UTF-8");			
 			Textractor gogo = new Textractor();
+
+			PrintWriter writer;
+			writer = new PrintWriter(gogo.outputFileName + "from_" + gogo.from.replaceAll(":","p") + "_until_" +gogo. until.replaceAll(":","p") + ".txt", "UTF-8");			
 			
 			gogo.stopwords = new StopWords().getStopwords();
 			gogo.termfreqFinder = new TermFrequency();
@@ -161,7 +193,7 @@ public class Textractor {
 				System.out.println("\n---- Retrieving records from OAI server ----\n");
 				
 				OAIHarvester myHarvester = new OAIHarvester();
-				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod(from, until, null);
+				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod(gogo.from, gogo.until, null);
 				
 				
 				System.out.println("Found " + recordList.size() + " records.");
@@ -190,6 +222,22 @@ public class Textractor {
 						if ( ttString.length()>0) {		
 							// get the tokenmatches
 							ArrayList<TokenMatch> resultTM = gogo.getTokenMatches(gtaaES, ir);
+							ArrayList<TokenMatch> resultTM2 = gogo.getNGramMatches(gtaaES, ir, 2);
+							if (resultTM2.size()>0) {
+								System.out.println(" Found bigram matches: ");
+								for (int j=0; j<resultTM2.size();j++){
+									System.out.println(" " + resultTM2.get(j).toString());
+								}
+							}
+							ArrayList<TokenMatch> resultTM3 = gogo.getNGramMatches(gtaaES, ir, 3 );
+							if (resultTM3.size()>0) {
+								System.out.println(" Found trigram matches: ");
+								for (int j=0; j<resultTM3.size();j++){
+									System.out.println(" " + resultTM3.get(j).toString());
+								}
+							}
+							resultTM.addAll(resultTM2);
+							resultTM.addAll(resultTM3);
 							ir.setTokenMatches(resultTM);
 							
 							//get the ner results
@@ -223,6 +271,16 @@ public class Textractor {
 
 
 
+	}
+
+
+	public double getMinNormFreq() {
+		return minNormFreq;
+	}
+
+
+	public void setMinNormFreq(double minNormFreq) {
+		this.minNormFreq = minNormFreq;
 	}
 
 }

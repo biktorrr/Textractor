@@ -10,8 +10,6 @@ public class ImmixRecord {
 	private ArrayList<String> manTerms; // the manual terms (if any)
 	private String ttString; // all teletekst content
 	private ArrayList<TokenMatch> tokenMatches; // tokens and matching gtaa terms TODO: replace by thing below
-	
-	
 	private ArrayList<ESDoc> extractedGTAATerms ; // list of final matches based on everything
 
 	private String identifier; // OAI identifier of the record

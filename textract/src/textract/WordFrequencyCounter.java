@@ -1,6 +1,7 @@
 package textract;
 
-	import java.util.Arrays;
+	import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -49,12 +50,40 @@ import java.util.StringTokenizer;
 	    	return this.getFrequentWords(tokens);
 	    }
 
+	    // For NGrams
+	    public Word[] getFrequentNGramsFromString(String myString, int n){
+	    	ArrayList<String> ngrams = new ArrayList<String>();
+	    	
+	    	StringTokenizer st = new StringTokenizer(myString);
+	    	int size = st.countTokens();
+	    	String[] tokens = new String[size];
+	    	int i = 0;
+	    	while (st.hasMoreTokens()) {
+		    	String curToken = st.nextToken();
+		    	tokens[i] = curToken.toLowerCase();
+		    	i++;
+	    	}
+	    	
+	    	int maxlength = tokens.length - n + 1;
+	    	for (int j=0; j<maxlength ; j++){
+	    		String ngram = "";
+	    		for (int k = 0; k<n; k++){
+	    			if (k>0){ ngram += " ";}
+	    			ngram += tokens[j+k];
+	    		}
+	    		ngrams.add(ngram);
+	    	}
+	    	String[] ngramsArray = new String[ngrams.size()];
+	    	ngramsArray = ngrams.toArray(ngramsArray);
+	    	return this.getFrequentWords(ngramsArray);
+	    }
+	    
+	    
 	    public static void main(String[] args) {
 	    	String test = "Hello world java code example hello hello hello";
 	    	
-	    	
-	        Word[] frequency = new WordFrequencyCounter().getFrequentTokensFromString(test);
-	        for(Word w:frequency){
+	        Word[] frequency2 = new WordFrequencyCounter().getFrequentNGramsFromString(test, 2);
+	        for(Word w:frequency2){
 	            System.out.println(w.word+"="+w.count);
 	        }
 	    }

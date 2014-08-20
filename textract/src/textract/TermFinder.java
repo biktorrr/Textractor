@@ -40,7 +40,7 @@ public class TermFinder {
 		return hitshits;
 	}
 	
-	// remove from results everything below threshold
+	// remove from JSONArray results everything with a es-score below some threshold
 	public JSONArray removeLowScores(JSONArray ja, double minScore){
 		
 		JSONArray result = new JSONArray();
