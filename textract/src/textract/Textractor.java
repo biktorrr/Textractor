@@ -1,15 +1,21 @@
 package textract;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.dom4j.Document;
 import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 
@@ -26,17 +32,16 @@ public class Textractor {
 
 	
 	private ArrayList<String> stopwords; // list of stopwords
-	private String from  = "2014-02-15T12:00:00Z";
-	private String until  = "2014-02-20T22:00:00Z";
+	private String from  = "2014-02-13T12:00:00Z";
+	private String until  = "2014-02-15T12:00:00Z";
 	
 	private int minAbsFreq = 2; // minimum frequency for a token to be added to the tokenlist
-	private double minNormFreq	= 5.00E-6;	 // minimum normalized frequency for a token to be added to the tokenlist
-	private double minScore= 3.5; // minimum score for a GTAA match 
+	private double minNormFreq	= 5.00E-5;	 // minimum normalized frequency for a token to be added to the tokenlist
+	private double minScore= 4.0; // minimum score for a GTAA match 
 
 	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
-
-	
+	private  ArrayList<ImmixRecord> theResults;
 
 	
 	public Textractor(){
@@ -173,16 +178,127 @@ public class Textractor {
 		return result;
 	}	
 	
-	public static void main(String[] args) throws ParseException {
+	// transform a list of immixrecords (a result) to XML document
+	public Document resultToXML(ArrayList<ImmixRecord> endResult){
+		Document document =  DocumentHelper.createDocument();
+		Element root = document.addElement("root");
+		root.addElement("from")
+			.addText(this.from.replaceAll(":","p"));
+		root.addElement("to")
+			.addText(this.until.replaceAll(":","p"));
+		root.addElement("minNormFreq")
+			.addText(Double.toString(this.minNormFreq));
+		root.addElement("minScore")
+		.	addText(Double.toString(minScore));
+		root.addElement("minAbsFreq")
+			.addText(Integer.toString(minAbsFreq));
+		
+		Element results = root.addElement("results");
+		for(ImmixRecord e : endResult){
+			results.add(e.toXML());
+		}
+			
+		return document;
+		
+	}
+	
+	//wriet an XML document
+	public void write(Document document, String fileString) throws IOException {
+		
+        OutputFormat format = OutputFormat.createPrettyPrint();
+        XMLWriter writer = new XMLWriter(
+            new FileWriter(fileString ), format
+        );
+        writer.write( document );
+        writer.close();      
+    }
+	
+	
+	
+	// new run, lean and mean
+	public ArrayList<ImmixRecord> run() throws ParseException, IOException, DocumentException, OAIException{
+		System.out.println("\n---- Initializing ----\n");
+		this.stopwords = new StopWords().getStopwords();
+		this.termfreqFinder = new TermFrequency();
+		ArrayList<ImmixRecord> endResult = new ArrayList<ImmixRecord>();
+		ElasticGTAASearcher gtaaES = new ElasticGTAASearcher();
+		
+		// get records from OAI
+		System.out.println("\n---- Retrieving records from OAI server ----\n");	
+		OAIHarvester myHarvester = new OAIHarvester();
+		List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod(this.from, this.until, null);
+		System.out.println("Found " + recordList.size() + " records.");
+
+		
+		// Loop through records
+		System.out.println("\n---- Looping through records -----\n");
+		for (int i=0; i<recordList.size();i++){
+
+			//create new immixRecord object with this identifier
+			String recordid = recordList.get(i).getHeader().getIdentifier();
+			
+			// only do expressions?
+			if (recordid.contains("Expressie")|| recordid.contains("Selectie")){ //TODO: is this ok? 
+				ImmixRecord ir = new ImmixRecord(recordid); 	
+		
+				// get the tt stuff
+				System.out.print(Integer.toString(i) + ": " + recordid + " >> ");
+				String ttString = this.getMetadataForOAIRecord(recordid);
+				ir.setTTString(ttString);	
+				
+				// get the manual terms
+				ArrayList<String> manTerms = this.getExistingTerms(recordid);
+				ir.setManTerms(manTerms);
+					
+				if ( ttString.length()>0) {		
+					// get the tokenmatches
+					ArrayList<TokenMatch> resultTM = this.getTokenMatches(gtaaES, ir);
+					/*
+					ArrayList<TokenMatch> resultTM2 = this.getNGramMatches(gtaaES, ir, 2);
+					if (resultTM2.size()>0) {
+						System.out.println(" Found bigram matches: ");
+						for (int j=0; j<resultTM2.size();j++){
+							System.out.println(" " + resultTM2.get(j).toString());
+						}
+					}
+					ArrayList<TokenMatch> resultTM3 = this.getNGramMatches(gtaaES, ir, 3 );
+					if (resultTM3.size()>0) {
+						System.out.println(" Found trigram matches: ");
+						for (int j=0; j<resultTM3.size();j++){
+							System.out.println(" " + resultTM3.get(j).toString());
+						}
+					}
+					resultTM.addAll(resultTM2);
+					resultTM.addAll(resultTM3);*/
+			
+					ir.setTokenMatches(resultTM);
+					
+					//get the ner results
+					NERrer nerrer = new NERrer();
+					ArrayList<NamedEntity> nes = nerrer.getGTAANES(gtaaES, ttString);
+					ir.setNEList(nes);
+				}
+				else {
+					System.out.println(" no tt found");
+				}
+				ir.consolidateGTAATerms();
+				endResult.add(ir);
+			}
+		}
+		System.out.println("\n---- I'm done ----\n");
+		return endResult;
+	}
+	
+	/*
+	// old run, prints comparison to manual keywords only
+	public void runComplete() throws ParseException{
 		System.out.println("\n---- Initializing ----\n");
 		try {
-			Textractor gogo = new Textractor();
-
 			PrintWriter writer;
-			writer = new PrintWriter(gogo.outputFileName + "from_" + gogo.from.replaceAll(":","p") + "_until_" +gogo. until.replaceAll(":","p") + ".txt", "UTF-8");			
+			writer = new PrintWriter(this.outputFileName + "from_" + this.from.replaceAll(":","p") + "_until_" +this.until.replaceAll(":","p") + ".txt", "UTF-8");			
 			
-			gogo.stopwords = new StopWords().getStopwords();
-			gogo.termfreqFinder = new TermFrequency();
+			this.stopwords = new StopWords().getStopwords();
+			this.termfreqFinder = new TermFrequency();
 			
 			ArrayList<ImmixRecord> endResult = new ArrayList<ImmixRecord>();
 			
@@ -193,7 +309,7 @@ public class Textractor {
 				System.out.println("\n---- Retrieving records from OAI server ----\n");
 				
 				OAIHarvester myHarvester = new OAIHarvester();
-				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod(gogo.from, gogo.until, null);
+				List<Record> recordList =  myHarvester.getOAIItemsForTimePeriod(this.from, this.until, null);
 				
 				
 				System.out.println("Found " + recordList.size() + " records.");
@@ -212,24 +328,24 @@ public class Textractor {
 				
 						// get the tt stuff
 						System.out.print(Integer.toString(i) + ": " + recordid + " >> ");
-						String ttString = gogo.getMetadataForOAIRecord(recordid);
+						String ttString = this.getMetadataForOAIRecord(recordid);
 						ir.setTTString(ttString);	
 						
 						// get the manual terms
-						ArrayList<String> manTerms = gogo.getExistingTerms(recordid);
+						ArrayList<String> manTerms = this.getExistingTerms(recordid);
 						ir.setManTerms(manTerms);
 							
 						if ( ttString.length()>0) {		
 							// get the tokenmatches
-							ArrayList<TokenMatch> resultTM = gogo.getTokenMatches(gtaaES, ir);
-							ArrayList<TokenMatch> resultTM2 = gogo.getNGramMatches(gtaaES, ir, 2);
+							ArrayList<TokenMatch> resultTM = this.getTokenMatches(gtaaES, ir);
+							ArrayList<TokenMatch> resultTM2 = this.getNGramMatches(gtaaES, ir, 2);
 							if (resultTM2.size()>0) {
 								System.out.println(" Found bigram matches: ");
 								for (int j=0; j<resultTM2.size();j++){
 									System.out.println(" " + resultTM2.get(j).toString());
 								}
 							}
-							ArrayList<TokenMatch> resultTM3 = gogo.getNGramMatches(gtaaES, ir, 3 );
+							ArrayList<TokenMatch> resultTM3 = this.getNGramMatches(gtaaES, ir, 3 );
 							if (resultTM3.size()>0) {
 								System.out.println(" Found trigram matches: ");
 								for (int j=0; j<resultTM3.size();j++){
@@ -268,9 +384,22 @@ public class Textractor {
 			e.printStackTrace();
 		}
 	
-
-
-
+		
+	}
+	*/
+	
+	
+	
+	public static void main(String[] args) {
+		Textractor gogo = new Textractor();
+		try {
+			gogo.theResults = gogo.run();
+			Document doc = gogo.resultToXML(gogo.theResults);
+			String filename = "output" + Long.toString(new Date().getTime()) + ".xml";
+			gogo.write(doc, filename);		
+		} catch (ParseException | IOException | DocumentException | OAIException e) {
+			e.printStackTrace();
+		}
 	}
 
 

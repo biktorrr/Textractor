@@ -2,6 +2,8 @@ package textract;
 
 import java.util.ArrayList;
 
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import org.json.simple.JSONObject;
 
 // internal datastructure for one immixrecord and the resulting extracted terms
@@ -10,12 +12,16 @@ public class ImmixRecord {
 	private ArrayList<String> manTerms; // the manual terms (if any)
 	private String ttString; // all teletekst content
 	private ArrayList<TokenMatch> tokenMatches; // tokens and matching gtaa terms TODO: replace by thing below
+	
 	private ArrayList<ESDoc> extractedGTAATerms ; // list of final matches based on everything
 
-	private String identifier; // OAI identifier of the record
+	private ArrayList<ESDoc> extractedGTAATopics ; // list of final matches based on everything Topics
+	private ArrayList<ESDoc> extractedGTAAPersons ; // list of final matches based on everything Persons
+	private ArrayList<ESDoc> extractedGTAALocations ; // list of final matches based on everything Locations
 
-	private ArrayList<NamedEntity> NEList ; // list of Named Entity objects
 	
+	private String identifier; // OAI identifier of the record
+	private ArrayList<NamedEntity> NEList ; // list of Named Entity objects
 	private int minMatches = 1; // parameter: minimum no matches to be found to be printed
 
 	public ImmixRecord() {
@@ -44,8 +50,20 @@ public class ImmixRecord {
 	}
 	
 	
-	// fetch all hits from all JSONArrays and put them as ESDocs in 
+	
 	public void consolidateGTAATerms(){
+		consolidateTopics();
+		consolidateNE();
+		
+		ArrayList<ESDoc> temp = new ArrayList<ESDoc>();
+		temp.addAll(extractedGTAATopics);
+		temp.addAll(extractedGTAAPersons);
+		temp.addAll(extractedGTAALocations);
+		setExtractedGTAATerms(temp);
+		
+	}
+	
+	public void consolidateTopics(){
 		ArrayList<ESDoc> termsBasedOnKeywords = new ArrayList<ESDoc>();
 		for (int i=0;i<tokenMatches.size();i++){
 			TokenMatch tm = tokenMatches.get(i);
@@ -57,15 +75,18 @@ public class ImmixRecord {
 				ed.uri = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("uri");
 				ed.conceptSchemes = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("conceptSchemes");
 				
-				if(termsBasedOnKeywords.contains(ed)){//do nothing (does this work?)
-				}
-				else{
-					termsBasedOnKeywords.add(ed);
-				}
+			
+				termsBasedOnKeywords.add(ed); //TODO: remove doubles?
+				
 			}
 		}
-		
-		ArrayList<ESDoc> termsBasedOnPNEs = new ArrayList<ESDoc>();
+		setExtractedGTAATopics(termsBasedOnKeywords);
+	}
+	
+	public void consolidateNE(){
+		ArrayList<ESDoc> persons = new ArrayList<ESDoc>();
+		ArrayList<ESDoc> locations = new ArrayList<ESDoc>();
+	//	ArrayList<ESDoc> Persons = new ArrayList<ESDoc>();
 		if (NEList.size()>0){
 			for (int i=0;i<NEList.size();i++){
 				NamedEntity tm = NEList.get(i);
@@ -77,20 +98,19 @@ public class ImmixRecord {
 					ed.uri = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("uri");
 					ed.conceptSchemes = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("conceptSchemes");
 					
-					if(termsBasedOnPNEs.contains(ed)){//do nothing (does this work?)
+					if(tm.neClass.contains("PERSON")){
+						persons.add(ed);
 					}
-					else{
-						termsBasedOnPNEs.add(ed);
+					else if(tm.neClass.contains("LOCATION")){
+						locations.add(ed);
 					}
-	
 				}
 			}
 		}
-		termsBasedOnKeywords.addAll(termsBasedOnPNEs);
-		extractedGTAATerms = termsBasedOnKeywords;
-
-		
-	}
+		setExtractedGTAAPersons(persons);
+		setExtractedGTAALocations(locations);
+		}
+	
 	
 	
 	public String toStringAll(){
@@ -173,6 +193,38 @@ public class ImmixRecord {
 		}
 		
 	
+	public Element toXML(){
+		Element record = DocumentHelper.createElement("record");
+		
+		record.addAttribute("identifier",identifier);
+		Element terms = record.addElement("terms");
+		
+		record.addAttribute("ttlength",Integer.toString(ttString.length()));
+		
+		for(int j = 0;j<extractedGTAATopics.size();j++){	
+			terms.addElement("term")
+				.addAttribute("axis", "topic")
+				.addAttribute("uri", extractedGTAATopics.get(j).uri)
+				.addText(extractedGTAATopics.get(j).preflabel);
+		}
+		
+		for(int j = 0;j<extractedGTAAPersons.size();j++){	
+			terms.addElement("term")
+			.addAttribute("axis", "person")
+			.addAttribute("uri", extractedGTAAPersons.get(j).uri)
+			.addText(extractedGTAAPersons.get(j).preflabel);	
+		}
+		
+		for(int j = 0;j<extractedGTAALocations.size();j++){	
+			terms.addElement("term")
+			.addAttribute("axis", "locations")
+			.addAttribute("uri", extractedGTAALocations.get(j).uri)
+			.addText(extractedGTAALocations.get(j).preflabel);	
+		}
+		
+		return record;
+		
+	}
 	
 	// print only if there both manual terms and some teletekst content
 	// print details
@@ -257,4 +309,62 @@ public class ImmixRecord {
 		NEList = nEList;
 	}
 
+	public String getTtString() {
+		return ttString;
+	}
+
+
+	public void setTtString(String ttString) {
+		this.ttString = ttString;
+	}
+
+
+	public ArrayList<ESDoc> getExtractedGTAATerms() {
+		return extractedGTAATerms;
+	}
+
+
+	public void setExtractedGTAATerms(ArrayList<ESDoc> extractedGTAATerms) {
+		this.extractedGTAATerms = extractedGTAATerms;
+	}
+
+
+	public ArrayList<ESDoc> getExtractedGTAATopics() {
+		return extractedGTAATopics;
+	}
+
+
+	public void setExtractedGTAATopics(ArrayList<ESDoc> extractedGTAATopics) {
+		this.extractedGTAATopics = extractedGTAATopics;
+	}
+
+
+	public ArrayList<ESDoc> getExtractedGTAAPersons() {
+		return extractedGTAAPersons;
+	}
+
+
+	public void setExtractedGTAAPersons(ArrayList<ESDoc> extractedGTAAPersons) {
+		this.extractedGTAAPersons = extractedGTAAPersons;
+	}
+
+
+	public ArrayList<ESDoc> getExtractedGTAALocations() {
+		return extractedGTAALocations;
+	}
+
+
+	public void setExtractedGTAALocations(ArrayList<ESDoc> extractedGTAALocations) {
+		this.extractedGTAALocations = extractedGTAALocations;
+	}
+
+
+	public int getMinMatches() {
+		return minMatches;
+	}
+
+
+	public void setMinMatches(int minMatches) {
+		this.minMatches = minMatches;
+}
 }

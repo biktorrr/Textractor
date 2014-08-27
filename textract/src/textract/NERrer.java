@@ -67,7 +67,9 @@ public class NERrer {
 		ArrayList<NamedEntity> result = new ArrayList<NamedEntity>();
 
 			String kafResult = getTreeKafFromCLTL(inputString);
-			String nerResult = getNerResultFromCLTL(kafResult);
+			String nerResult_dirty = getNerResultFromCLTL(kafResult);
+			
+			String nerResult = cleanNerResult(nerResult_dirty);
 			
 			Document document = DocumentHelper.parseText(nerResult);
 			List list = document.selectNodes("//entity");
@@ -92,6 +94,12 @@ public class NERrer {
 		return result;
 	}
 	
+	private static String cleanNerResult(String in) {
+		return "<?xml version" + in.split("<?xml version")[1];
+
+	}
+
+
 	private String getNerResultFromCLTL(String inputString) throws IOException {
 		String urlString = "http://ic.vupr.nl:8081/opener_ner?lang=nl";
 		// Connect to google.com
@@ -218,6 +226,8 @@ public class NERrer {
 	
 
 	public static void main(String[] args) {
+		
+		System.out.println(cleanNerResult("bladiev a asdlasdlasd. asd.as.d qwd.w.wkks dasd <?xml version=\"1.0\" "));
 		
 		NERrer gogo = new NERrer();
 		
