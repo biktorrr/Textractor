@@ -11,5 +11,17 @@ public class ESDoc {
 	public String toString(){
 		return "gtaa:" + preflabel;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		ESDoc to = (ESDoc) o;
+		if (to.uri.equals(this.uri)){
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	
 	
 }

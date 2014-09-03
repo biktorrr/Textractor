@@ -1,10 +1,7 @@
 package textract;
 
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -32,8 +29,8 @@ public class Textractor {
 
 	
 	private ArrayList<String> stopwords; // list of stopwords
-	private String from  = "2014-02-13T12:00:00Z";
-	private String until  = "2014-02-15T12:00:00Z";
+	private String from  = "2014-01-02T04:00:00Z";
+	private String until  = "2014-01-02T10:59:00Z";
 	
 	private int minAbsFreq = 2; // minimum frequency for a token to be added to the tokenlist
 	private double minNormFreq	= 5.00E-5;	 // minimum normalized frequency for a token to be added to the tokenlist

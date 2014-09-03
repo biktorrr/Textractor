@@ -99,10 +99,18 @@ public class ImmixRecord {
 					ed.conceptSchemes = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("conceptSchemes");
 					
 					if(tm.neClass.contains("PERSON")){
-						persons.add(ed);
+						if (persons.contains(ed)){
+							// do nothing TODO: do something with the frequencies?
+						}
+						else
+							persons.add(ed);
 					}
 					else if(tm.neClass.contains("LOCATION")){
-						locations.add(ed);
+						if (locations.contains(ed)){
+							// do nothing TODO: do something with the frequencies?
+						}
+						else 
+							locations.add(ed);
 					}
 				}
 			}
