@@ -1,6 +1,7 @@
 package textract;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.search.SearchResponse;
@@ -11,7 +12,12 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
 import org.elasticsearch.common.xcontent.XContentFactory;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.FilterBuilder;
+import org.elasticsearch.index.query.FilterBuilders;
+import org.elasticsearch.index.query.FilteredQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.TermFilterBuilder;
 
 
 // Class for searching for terms in GTAA. In this case it is done using Elasticsearch
@@ -132,9 +138,24 @@ public class ElasticGTAASearcher {
 			        .execute()
 			        .actionGet();		
 		return response.toString();	
-	}	
+	}
 	
-	
+	/* TODO: fix this here
+	//search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc)
+	public String searchForStringInCS(String searchString, String conceptScheme) {
+		// remove namespace
+		 QueryBuilder qb =  QueryBuilders.filteredQuery(
+				 QueryBuilders.termQuery("_all", searchString), FilterBuilders.termFilter("conceptScheme", conceptScheme))			 	
+				 ;
+				 QueryBuilder qb = QueryBuilders.matchQuery("_all", searchString);
+		
+				 
+		SearchResponse response = client.prepareSearch(index)
+			        .setQuery( qb)   
+			        .execute()
+			        .actionGet();		
+		return response.toString();	
+	}	*/
 	
 	public static void main(String[] args) {
 
@@ -143,8 +164,8 @@ public class ElasticGTAASearcher {
 		//System.out.println(es.searchForString("iets anders"));
 		//System.out.println(es.searchForPrefLabel("personen"));
 		//System.out.println(es.searchForStringFuzzy("personen"));
-		System.out.println(es.searchForStringInCS("banken","Onderwerpen"));
-		System.out.println(es.searchForStringInCS("Jan Peter Balkenende","Persoonsnamen"));
+		System.out.println(es.searchForStringInCS("brandweer","http://data.beeldengeluid.nl/gtaa/Onderwerpen"));
+		System.out.println(es.searchForStringInCS("brandweer","http://data.beeldengeluid.nl/gtaa/OnderwerpenBenG"));
 
 	}
 }

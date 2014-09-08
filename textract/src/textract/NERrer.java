@@ -32,6 +32,7 @@ public class NERrer {
 		System.out.print(" Recognizing Named Entities..");
 		TermFinder tf = new TermFinder();
 		ArrayList<NamedEntity> result = getNamedEntitiesFromCLTL(inputString);
+		
 		if (result.size()>0){
 			System.out.println("..some found.");
 			for(int i=0;i<result.size();i++){
@@ -55,6 +56,7 @@ public class NERrer {
 		}
 		else {
 			System.out.println("..none found.");}
+		if (Textractor.debug==true){System.out.println("\nNER result: "+ result);}
 		return result;
 	}
 	

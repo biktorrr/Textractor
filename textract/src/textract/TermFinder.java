@@ -100,7 +100,7 @@ public class TermFinder {
 	public static void main(String[] args) throws ParseException {
 		TermFinder tf = new TermFinder();
 		ElasticGTAASearcher gtaaES = new ElasticGTAASearcher();
-		System.out.println(tf.findTermWithThreshold(gtaaES, "personen", 3.0));
+		System.out.println(tf.findTermWithThreshold(gtaaES, "brandweer", 3.0));
 	}
 		
 }

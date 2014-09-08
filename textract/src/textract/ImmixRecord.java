@@ -86,7 +86,7 @@ public class ImmixRecord {
 	public void consolidateNE(){
 		ArrayList<ESDoc> persons = new ArrayList<ESDoc>();
 		ArrayList<ESDoc> locations = new ArrayList<ESDoc>();
-	//	ArrayList<ESDoc> Persons = new ArrayList<ESDoc>();
+
 		if (NEList.size()>0){
 			for (int i=0;i<NEList.size();i++){
 				NamedEntity tm = NEList.get(i);
@@ -123,7 +123,7 @@ public class ImmixRecord {
 	
 	public String toStringAll(){
 		String result = ""; 
-		
+	
 		result += "Record " + identifier;
 		
 		if (manTerms.size() > 0) { 
@@ -131,13 +131,11 @@ public class ImmixRecord {
 			for(int j = 0;j<manTerms.size();j++){
 				if (j>0) { result+= ", ";}	
 				result+= manTerms.get(j);
-				
 			}
 		}
 		else result += "\n No manual terms";
-	
 		if (tokenMatches.size() > 0) { 
-			result += " Found terms";
+			result += "\n Found terms";
 			for(int j = 0;j<tokenMatches.size();j++){	
 				// only include when matches are found (minMatches)
 				if(tokenMatches.get(j).gtaaMatches.size() >= minMatches){
@@ -145,19 +143,15 @@ public class ImmixRecord {
 				}
 			}
 		}
-	
 		else result += "\n No extracted terms\n";
-	
 		if (NEList.size() > 0) { 
 			result += "\n Named Entities: ";
 			for(int j = 0;j<NEList.size();j++){
 				if (j>0) { result+= ", ";}	
-				result+= NEList.get(j).toString() + " ";
-				
+				result+= NEList.get(j).toString() + " ";		
 			}
 		}
 		else result += "\n No Named Entities";
-		
 		result+= "\n\n";
 		return result;
 	}
