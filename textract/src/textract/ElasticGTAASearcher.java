@@ -59,21 +59,38 @@ public class ElasticGTAASearcher {
 			String myuri = ed.uri.replaceAll("/", "_");
 			// only gtaa concepts
 			if (ed.conceptSchemes.contains("data.beeldengeluid.nl/gtaa")){
-				try {
+				for (String conceptScheme : ed.conceptSchemes.split(" ")){
+					try {
+						String cstype = "";
+						if (conceptScheme.equals("http://data.beeldengeluid.nl/gtaa/Onderwerpen")){
+							cstype = "Onderwerpen";
+						}
+						else if (conceptScheme.equals("http://data.beeldengeluid.nl/gtaa/Persoonsnamen")){
+							cstype = "Persoonsnamen";
+						}
+						else if (conceptScheme.equals("http://data.beeldengeluid.nl/gtaa/Namen")){
+							cstype = "Namen";
+						}
+						else if (conceptScheme.equals("http://data.beeldengeluid.nl/gtaa/GeografischeNamen")){
+							cstype = "GeografischeNamen";
+						}
+						if (cstype != ""){	// only add to index if one of the four axes
+							bulkRequest.add(client.prepareIndex("gtaa", cstype, myuri)
+							        .setSource(XContentFactory.jsonBuilder()
+							                    .startObject()
+							                        .field("uri", myuri)
+							                        .field("preflabel", ed.preflabel)
+							                        .field("altlabel", ed.altlabel) //TODO: add multifields?
+							                        .field("conceptScheme", conceptScheme)
+							                    .endObject()
+							                  )
+							        );
+						}
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
-					bulkRequest.add(client.prepareIndex("gtaa", "concept", myuri)
-					        .setSource(XContentFactory.jsonBuilder()
-					                    .startObject()
-					                        .field("uri", myuri)
-					                        .field("preflabel", ed.preflabel)
-					                        .field("altlabel", ed.altlabel)
-					                        .field("conceptScheme", ed.conceptSchemes)
-					                    .endObject()
-					                  )
-					        );
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 			}
 		}
@@ -124,8 +141,19 @@ public class ElasticGTAASearcher {
 		return response.toString();	
 	}	
 	
-
-	// search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc)
+	// search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc) > new version based on es type
+	public String searchForStringInCS(String searchString, String conceptScheme) {
+		FilterBuilder filter = FilterBuilders.typeFilter(conceptScheme);
+		QueryBuilder qb = QueryBuilders.filteredQuery(QueryBuilders.termQuery("_all", searchString), filter);
+		
+		SearchResponse response = client.prepareSearch(index)
+			        .setQuery(qb)   
+			        .execute()
+			        .actionGet();		
+		return response.toString();	
+	}
+	
+	/* search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc)
 	public String searchForStringInCS(String searchString, String conceptScheme) {
 		// remove namespace
 		BoolQueryBuilder qb = QueryBuilders
@@ -138,7 +166,7 @@ public class ElasticGTAASearcher {
 			        .execute()
 			        .actionGet();		
 		return response.toString();	
-	}
+	}*/
 	
 	/* TODO: fix this here
 	//search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc)
@@ -164,8 +192,8 @@ public class ElasticGTAASearcher {
 		//System.out.println(es.searchForString("iets anders"));
 		//System.out.println(es.searchForPrefLabel("personen"));
 		//System.out.println(es.searchForStringFuzzy("personen"));
-		System.out.println(es.searchForStringInCS("brandweer","http://data.beeldengeluid.nl/gtaa/Onderwerpen"));
-		System.out.println(es.searchForStringInCS("brandweer","http://data.beeldengeluid.nl/gtaa/OnderwerpenBenG"));
+		System.out.println(es.searchForStringInCS("brandweer","Onderwerpen"));
+		System.out.println(es.searchForStringInCS("wiegel","Persoonsnamen"));
 
 	}
 }

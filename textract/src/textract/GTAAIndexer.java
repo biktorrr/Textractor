@@ -14,9 +14,6 @@ import se.kb.oai.pmh.ResumptionToken;
 // This class is used to fill an ES instance with GTAA, retrieved from the GTAA OpenSKOS endpoint
 public class GTAAIndexer {
 
-
-	
-	
 	// get documents to be indexed in elasticsearch
 	public  ArrayList<ESDoc> getOAIRecords() {
 		ArrayList<ESDoc> result = new ArrayList<ESDoc>();
@@ -26,7 +23,7 @@ public class GTAAIndexer {
 		
 		boolean more = true;
 		int counter = 0;
-		int maxCounter = 9999999;
+		int maxCounter = 99999999;
 		ResumptionToken rt = null;
 		
 		while(more  && counter < maxCounter){
@@ -102,9 +99,16 @@ public class GTAAIndexer {
 				e.printStackTrace(); 
 				more = false;
 				}
+			
 			System.out.print("indexing..");
-			es.indexESDocs(onePage);		
-			System.out.println("done");
+			try {
+				es.indexESDocs(onePage);		
+				System.out.println("done");
+			}
+			catch (Exception e){
+				e.printStackTrace(); 
+				System.out.println("error, continuing");
+			}
 			}
 		System.out.println("------ done -------");
 	}
