@@ -18,6 +18,7 @@ public class ImmixRecord {
 	private ArrayList<ESDoc> extractedGTAATopics ; // list of final matches based on everything Topics
 	private ArrayList<ESDoc> extractedGTAAPersons ; // list of final matches based on everything Persons
 	private ArrayList<ESDoc> extractedGTAALocations ; // list of final matches based on everything Locations
+	private ArrayList<ESDoc> extractedGTAANames ; // list of final matches based on everything Locations
 
 	
 	private String identifier; // OAI identifier of the record
@@ -50,7 +51,7 @@ public class ImmixRecord {
 	}
 	
 	
-	
+	//for all terms (not in use)
 	public void consolidateGTAATerms(){
 		consolidateTopics();
 		consolidateNE();
@@ -73,10 +74,10 @@ public class ImmixRecord {
 				ed.preflabel = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("preflabel");
 				ed.altlabel = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("altlabel");
 				ed.uri = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("uri");
-				ed.conceptSchemes = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("conceptSchemes");
-				
+				ed.conceptSchemes = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("conceptScheme");
+				ed.freq = tm.frequency;
 			
-				termsBasedOnKeywords.add(ed); //TODO: remove doubles?
+				termsBasedOnKeywords.add(ed); 
 				
 			}
 		}
@@ -86,7 +87,9 @@ public class ImmixRecord {
 	public void consolidateNE(){
 		ArrayList<ESDoc> persons = new ArrayList<ESDoc>();
 		ArrayList<ESDoc> locations = new ArrayList<ESDoc>();
-
+		ArrayList<ESDoc> onderwerpen = new ArrayList<ESDoc>();
+		ArrayList<ESDoc> names = new ArrayList<ESDoc>();
+		
 		if (NEList.size()>0){
 			for (int i=0;i<NEList.size();i++){
 				NamedEntity tm = NEList.get(i);
@@ -96,31 +99,82 @@ public class ImmixRecord {
 					ed.preflabel = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("preflabel");
 					ed.altlabel = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("altlabel");
 					ed.uri = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("uri");
-					ed.conceptSchemes = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("conceptSchemes");
+					ed.conceptSchemes = (String) ((JSONObject) ((JSONObject) tm.gtaaMatches.get(j)).get("_source")).get("conceptScheme");
 					
-					if(tm.neClass.contains("PERSON")){
-						if (persons.contains(ed)){
-							// do nothing TODO: do something with the frequencies?
+					
+					if(ed.conceptSchemes.contains("Persoonsnamen")){
+						boolean found = false;
+						for (ESDoc alreadyin : persons){
+							if(alreadyin.equals(ed)){
+								alreadyin.freq +=1;
+								found = true;
+							}
 						}
-						else
+						if (found==false){
+							ed.freq = 1;
 							persons.add(ed);
-					}
-					else if(tm.neClass.contains("LOCATION")){
-						if (locations.contains(ed)){
-							// do nothing TODO: do something with the frequencies?
 						}
-						else 
+					}
+					
+					else if(ed.conceptSchemes.contains("Onderwerpen")){
+						boolean found = false;
+						for (ESDoc alreadyin : onderwerpen){
+							if(alreadyin.equals(ed)){
+								alreadyin.freq +=1;
+								found = true;
+							}
+						}
+						if (found==false){
+							ed.freq = 1;
+							onderwerpen.add(ed);
+						}
+					}
+					
+					else if(ed.conceptSchemes.contains("GeografischeNamen")){
+						boolean found = false;
+						for (ESDoc alreadyin : locations){
+							if(alreadyin.equals(ed)){
+								alreadyin.freq +=1;
+								found = true;
+							}
+						}
+						if (found==false){
+							ed.freq = 1;
 							locations.add(ed);
+						}
+					}
+					
+					else if(ed.conceptSchemes.contains("Namen")){
+						boolean found = false;
+						for (ESDoc alreadyin : names){
+							if(alreadyin.equals(ed)){
+								alreadyin.freq +=1;
+								found = true;
+							}
+						}
+						if (found==false){
+							ed.freq = 1;
+							names.add(ed);
+						}
 					}
 				}
 			}
 		}
+		setExtractedGTAANames(names);
 		setExtractedGTAAPersons(persons);
 		setExtractedGTAALocations(locations);
+		 
+		addExtractedGTAATopics(onderwerpen);
 		}
 	
-	
-	
+
+
+
+	private void addExtractedGTAATopics(ArrayList<ESDoc> onderwerpen) {
+		this.extractedGTAATopics.addAll(onderwerpen); //TODO: freq here?
+	}
+
+
 	public String toStringAll(){
 		String result = ""; 
 	
@@ -205,25 +259,35 @@ public class ImmixRecord {
 		
 		for(int j = 0;j<extractedGTAATopics.size();j++){	
 			terms.addElement("term")
-				.addAttribute("axis", "topic")
-				.addAttribute("uri", extractedGTAATopics.get(j).uri)
+				.addAttribute("axis", "Onderwerpen")
+				.addAttribute("uri", extractedGTAATopics.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/"))
+				.addAttribute("score", Integer.toString(extractedGTAATopics.get(j).freq))
 				.addText(extractedGTAATopics.get(j).preflabel);
 		}
 		
 		for(int j = 0;j<extractedGTAAPersons.size();j++){	
 			terms.addElement("term")
-			.addAttribute("axis", "person")
-			.addAttribute("uri", extractedGTAAPersons.get(j).uri)
+			.addAttribute("axis", "PersoonsNamen")
+			.addAttribute("uri", extractedGTAAPersons.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/"))
+			.addAttribute("score", Integer.toString(extractedGTAAPersons.get(j).freq))
 			.addText(extractedGTAAPersons.get(j).preflabel);	
 		}
 		
 		for(int j = 0;j<extractedGTAALocations.size();j++){	
 			terms.addElement("term")
-			.addAttribute("axis", "locations")
-			.addAttribute("uri", extractedGTAALocations.get(j).uri)
+			.addAttribute("axis", "GeografischeNamen")
+			.addAttribute("uri", extractedGTAALocations.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/"))
+			.addAttribute("score", Integer.toString(extractedGTAALocations.get(j).freq))
 			.addText(extractedGTAALocations.get(j).preflabel);	
 		}
 		
+		for(int j = 0;j<extractedGTAANames.size();j++){	
+			terms.addElement("term")
+			.addAttribute("axis", "Namen")
+			.addAttribute("uri", extractedGTAANames.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/"))
+			.addAttribute("score", Integer.toString(extractedGTAANames.get(j).freq))
+		.addText(extractedGTAANames.get(j).preflabel);	
+		}
 		return record;
 		
 	}
@@ -340,6 +404,12 @@ public class ImmixRecord {
 		this.extractedGTAATopics = extractedGTAATopics;
 	}
 
+
+
+	private void setExtractedGTAANames(ArrayList<ESDoc> names) {
+		this.extractedGTAANames = names;
+	}
+	
 
 	public ArrayList<ESDoc> getExtractedGTAAPersons() {
 		return extractedGTAAPersons;

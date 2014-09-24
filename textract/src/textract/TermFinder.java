@@ -60,6 +60,23 @@ public class TermFinder {
 		return removeLowScores(result, minScore);		
 	}
 	
+	// find hits in Onderwerpen-axis (only used for NER)
+	public JSONArray  matchOnderwerpen (String inputString, ElasticGTAASearcher gtaaES, double minScore){
+		JSONArray hitshits = new JSONArray();
+		String esJSONString = gtaaES.searchForStringInCS(inputString, "Onderwerpen");
+		
+		try {
+			JSONObject esJsonObject;
+			esJsonObject = (JSONObject) JSONValue.parseWithException(esJSONString);
+			JSONObject hits = (JSONObject) esJsonObject.get("hits");
+			hitshits = (JSONArray) hits.get("hits");
+			
+		} catch (ParseException  e) {
+			e.printStackTrace();
+		}
+		return removeLowScores(hitshits, minScore);
+	}	
+	
 	// find hits in Person Name-axis
 	public JSONArray  matchPersonNames (String inputString, ElasticGTAASearcher gtaaES, double minScore){
 		JSONArray hitshits = new JSONArray();
@@ -94,13 +111,28 @@ public class TermFinder {
 		return removeLowScores(hitshits, minScore);
 	}
 	
-	
+	// find hits in Namen-axis
+	public JSONArray  matchNames (String inputString, ElasticGTAASearcher gtaaES, double minScore){
+		JSONArray hitshits = new JSONArray();
+		String esJSONString = gtaaES.searchForStringInCS(inputString, "Namen");
+		
+		try {
+			JSONObject esJsonObject;
+			esJsonObject = (JSONObject) JSONValue.parseWithException(esJSONString);
+			JSONObject hits = (JSONObject) esJsonObject.get("hits");
+			hitshits = (JSONArray) hits.get("hits");
+			
+		} catch (ParseException  e) {
+			e.printStackTrace();
+		}
+		return removeLowScores(hitshits, minScore);
+	}
 	
 	
 	public static void main(String[] args) throws ParseException {
 		TermFinder tf = new TermFinder();
 		ElasticGTAASearcher gtaaES = new ElasticGTAASearcher();
-		System.out.println(tf.findTermWithThreshold(gtaaES, "brandweer", 3.0));
+		System.out.println(tf.matchPersonNames( "Pieter Derks", gtaaES, 3.0));
 	}
 		
 }

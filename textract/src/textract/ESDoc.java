@@ -8,6 +8,9 @@ public class ESDoc {
 	public String conceptSchemes;
 	public String uri;
 
+	public int	freq = 0;	// frequency of occurrence
+	public float score; // final score
+	
 	public String toString(){
 		return "gtaa:" + preflabel;
 	}

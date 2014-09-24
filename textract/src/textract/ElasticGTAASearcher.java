@@ -143,14 +143,21 @@ public class ElasticGTAASearcher {
 	
 	// search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc) > new version based on es type
 	public String searchForStringInCS(String searchString, String conceptScheme) {
+		try{
 		FilterBuilder filter = FilterBuilders.typeFilter(conceptScheme);
-		QueryBuilder qb = QueryBuilders.filteredQuery(QueryBuilders.termQuery("_all", searchString), filter);
+		QueryBuilder qb = QueryBuilders.filteredQuery(QueryBuilders.queryString(searchString), filter);
 		
 		SearchResponse response = client.prepareSearch(index)
 			        .setQuery(qb)   
 			        .execute()
-			        .actionGet();		
+			        .actionGet();
 		return response.toString();	
+
+		} 
+		catch (Exception e){
+			System.out.print("e");
+			return emptyResult();
+		}
 	}
 	
 	/* search for a string in a specific  conceptscheme (one of Onderwerpen, Persoonsnamen, etc)
@@ -185,6 +192,12 @@ public class ElasticGTAASearcher {
 		return response.toString();	
 	}	*/
 	
+	private String emptyResult() {
+		String returnstring = "{\"hits\":{\"total\":0,\"max_score\":null,\"hits\":[]}}";
+		return returnstring;
+	}
+
+
 	public static void main(String[] args) {
 
 		ElasticGTAASearcher es = new ElasticGTAASearcher();
@@ -192,8 +205,8 @@ public class ElasticGTAASearcher {
 		//System.out.println(es.searchForString("iets anders"));
 		//System.out.println(es.searchForPrefLabel("personen"));
 		//System.out.println(es.searchForStringFuzzy("personen"));
-		System.out.println(es.searchForStringInCS("brandweer","Onderwerpen"));
-		System.out.println(es.searchForStringInCS("wiegel","Persoonsnamen"));
+		System.out.println(es.searchForStringInCS("ik:","Onderwerpen"));
+		System.out.println(es.searchForStringInCS("derks, pieter","Persoonsnamen"));
 
 	}
 }

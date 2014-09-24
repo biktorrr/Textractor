@@ -11,7 +11,11 @@ public class NamedEntity {
 	
 	
 	public String toString(){
-		return "[ "+ neString + " | "+ neClass + " | " + gtaaMatches.toString() + "]";
-		
+		if (gtaaMatches !=null){
+			return "[ "+ neString + " | "+ neClass + " | " + gtaaMatches.toString() + "]";
+		}
+		else{
+			return "[ "+ neString + " | "+ neClass + " | no matches (yet) ]";
+		}
 	}
 }

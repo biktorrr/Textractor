@@ -45,10 +45,12 @@ public class NERrer {
 					matches= tf.matchGeo(ne.neString, gtaaES, minScore); 
 				}
 				else if (ne.neClass.equalsIgnoreCase("ORGANIZATION")) {
-					//TODO: what here? 
+					matches= tf.matchNames(ne.neString, gtaaES, minScore); 
 				}
 				else if (ne.neClass=="MISC") {
-					//TODO: what here? 
+					matches= tf.matchNames(ne.neString, gtaaES, minScore);
+					matches.addAll(tf.matchPersonNames(ne.neString, gtaaES, minScore));
+					matches.addAll(tf.matchOnderwerpen(ne.neString, gtaaES, minScore));
 				}
 				ne.gtaaMatches = matches;
 			}
@@ -165,7 +167,7 @@ public class NERrer {
 	
 	// get the KAF Treetag representation of a string (uses webservice)
 		private String getTreeKafFromCLTL(String inputString) throws IOException {
-			String urlString = "http://ic.vupr.nl:8081/treetagger_plain?lang=nl";
+			String urlString = "http://ic.vupr.nl:8081/treetagger_plain_to_kaf?lang=nl";
 			// Connect to google.com
 	        URL url = new URL(urlString);
 	        String postData = inputString;
@@ -229,13 +231,13 @@ public class NERrer {
 
 	public static void main(String[] args) {
 		
-		System.out.println(cleanNerResult("bladiev a asdlasdlasd. asd.as.d qwd.w.wkks dasd <?xml version=\"1.0\" "));
 		
 		NERrer gogo = new NERrer();
-		
+		String test1 = "De Nederlandse economie is in het tweede kwartaal harder gegroeid dan eerder werd gedacht. Economie in tweede kwartaal harder gegroeid dan gedacht Foto:  Hollandse Hoogte Dat blijkt woensdag uit een tweede raming van het Centraal Bureau voor de Statistiek (CBS). De economie groeide met 0,7 procent ten opzichte van het eerste kwartaal. In augustus werd er nog vanuit gegaan dat de economie met 0,5 procent was gegroeid. Uit de tweede raming blijkt dat consumenten iets meer hebben uitgegeven dan eerder was berekend. Ook is er meer geïnvesteerd in zogenoemde vaste activa. Dat zijn dingen die langer dan een jaar worden gebruikt zoals gebouwen, machines en software. Het statistiekbureau past het beeld van de economie overigens niet aan. De groei van het tweede kwartaal is nog steeds vooral aan de export toe te schrijven.  Jaar op jaar Ook de groei van jaar op jaar was groter dan eerder gemeld. Volgens de nieuwe gegevens is de economie met 1,1 procent gegroeid ten opzichte van het tweede kwartaal in 2013. Eerder werd een groei van 0,9 procent berekend. Dat verschil ligt vooral in de consumptie van huishoudens en investeringen in bouwwerken. Een aantal percentages viel echter lager uit. Dat gold onder meer voor het handelssaldo, dat is de export minus de import. Ook heeft de overheid minder uitgegeven dan eerder was berekend. Beweeg de cursor over de lijn om de percentages te zien. De gegevens zijn afkomstig van het CBS. - (c)NU.nl/Jerry Vermanen Verder heeft het CBS de gegevens over banen ook aangepast. Er waren in het tweede kwartaal duizend minder banen dan in het voorgaande kwartaal. De eerste raming ging uit van een daling van achtduizend banen. Bij de vergelijking van jaar op jaar is de daling bijgesteld van 80.000 naar 70.000 banen. Informatie De eerste raming is 45 dagen na afloop van het tweede kwartaal berekend. Maar daarna kwam er meer informatie binnen van bedrijven in de zakelijke dienstverlening, de bouw en de horeca.In de afgelopen vijf jaar weken tweede ramingen gemiddeld 0,06 procentpunt af van de aanvankelijk gepubliceerde gegevens.";
 		String test = "Hallo, mijn naam is Victor de Boer en ik woon in de mooie stad Haarlem. Ik werk nu bij het Nederlands Instituut voor Beeld en Geluid in Hilversum. Hiervoor was ik werkzaam bij de Vrije Universiteit. ";
 		try {
-			ArrayList result = gogo.getNamedEntitiesFromCLTL(test);
+			ArrayList<NamedEntity> result =  gogo.getNamedEntitiesFromCLTL(test1);
+			//ArrayList result = gogo.getNamedEntitiesFromCLTL(test1);
 			System.out.println(result.toString());
 		} catch (IOException | DocumentException e ) {
 			e.printStackTrace();

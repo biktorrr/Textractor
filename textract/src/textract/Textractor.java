@@ -31,14 +31,12 @@ public class Textractor {
 	
 	private ArrayList<String> stopwords; // list of stopwords
 	
-
-
 	private String from  = "2014-02-01T04:00:00Z";
-	private String until  = "2014-02-01T23:59:00Z";
+	private String until  = "2014-02-04T23:59:00Z";
 	
 	private int minAbsFreq = 2; // minimum frequency for a token to be added to the tokenlist
-	private double minNormFreq	= 5.00E-8;	 // minimum normalized frequency for a token to be added to the tokenlist
-	private double minScore= 4.0; // minimum score for a GTAA match 
+	private double minNormFreq	= 5.00E-7;	 // minimum normalized frequency for a token to be added to the tokenlist
+	private double minScore= 3.0; // minimum score for a GTAA match 
 
 	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
@@ -236,18 +234,14 @@ public class Textractor {
 			ArrayList<TokenMatch> resultTM2 = this.getNGramMatches(gtaaES, ir, 2);
 			if (resultTM2.size()>0) {
 				System.out.println(" Found bigram matches: ");
-				for (int j=0; j<resultTM2.size();j++){
-					System.out.println(" " + resultTM2.get(j).toString());
-				}
+				//for (int j=0; j<resultTM2.size();j++){System.out.println(" " + resultTM2.get(j).toString());}
 			}
 			if (debug){System.out.println("N=1 Matches: " + resultTM);}
 
 			ArrayList<TokenMatch> resultTM3 = this.getNGramMatches(gtaaES, ir, 3 );
 			if (resultTM3.size()>0) {
 				System.out.println(" Found trigram matches: ");
-				for (int j=0; j<resultTM3.size();j++){
-					System.out.println(" " + resultTM3.get(j).toString());
-				}
+				//for (int j=0; j<resultTM3.size();j++){System.out.println(" " + resultTM3.get(j).toString());}
 			}
 			resultTM.addAll(resultTM2);
 			resultTM.addAll(resultTM3);
@@ -297,6 +291,9 @@ public class Textractor {
 			if (recordid.contains("Expressie")|| recordid.contains("Selectie")){ //TODO: is this ok? 
 				ImmixRecord ir = retrieveAll(recordid, gtaaES); 	
 				endResult.add(ir);
+			}
+			else {
+				System.out.println("not expressie or selectie");
 			}
 		}
 		System.out.println("\n---- I'm done ----\n");
