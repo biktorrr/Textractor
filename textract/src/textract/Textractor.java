@@ -315,8 +315,8 @@ public class Textractor {
 		
 		try {
 			gogo.theResults = gogo.run();
-			Document doc = gogo.resultToXML(gogo.theResults);
 			System.out.println("\n---- Writing results ----\n");
+			Document doc = gogo.resultToXML(gogo.theResults);
 			String filename = "output" + Long.toString(new Date().getTime()) + ".xml";
 			gogo.write(doc, filename);		
 			System.out.println("\n---- Also done ----\n");
