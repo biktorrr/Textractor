@@ -21,11 +21,18 @@ public class ImmixRecord {
 	private ArrayList<ESDoc> extractedGTAANames ; // list of final matches based on everything Locations
 
 	
-	private String identifier; // OAI identifier of the record
+	private String identifier; 		// OAI identifier of the record
+	private String docID ;			// Identifier of the video
+	
 	private ArrayList<NamedEntity> NEList ; // list of Named Entity objects
 	private int minMatches = 1; // parameter: minimum no matches to be found to be printed
 
+	private int minFreq = 2; // minimum nr of times a concept appears in the record
+	
+	private boolean complete = true; // print all information in xml?
+	
 	public ImmixRecord() {
+		
 		
 	}
 	
@@ -51,19 +58,35 @@ public class ImmixRecord {
 	}
 	
 	
-	//for all terms (not in use)
+	//for all terms (not in use?)
 	public void consolidateGTAATerms(){
 		consolidateTopics();
 		consolidateNE();
+		
 		
 		ArrayList<ESDoc> temp = new ArrayList<ESDoc>();
 		temp.addAll(extractedGTAATopics);
 		temp.addAll(extractedGTAAPersons);
 		temp.addAll(extractedGTAALocations);
-		setExtractedGTAATerms(temp);
+		temp.addAll(extractedGTAANames);
+
 		
+		ArrayList<ESDoc> results = removeInfrequentTerms(temp);
+		setExtractedGTAATerms(results);
+				
 	}
 	
+	private ArrayList<ESDoc> removeInfrequentTerms(ArrayList<ESDoc> temp) {
+		ArrayList<ESDoc> results = new ArrayList<ESDoc>();
+		for(ESDoc ed : temp){
+			if(ed.freq>=minFreq){	// remove infrequent things
+				results.add(ed);
+			}		
+		}
+		return results;
+	}
+
+
 	public void consolidateTopics(){
 		ArrayList<ESDoc> termsBasedOnKeywords = new ArrayList<ESDoc>();
 		for (int i=0;i<tokenMatches.size();i++){
@@ -87,7 +110,7 @@ public class ImmixRecord {
 	public void consolidateNE(){
 		ArrayList<ESDoc> persons = new ArrayList<ESDoc>();
 		ArrayList<ESDoc> locations = new ArrayList<ESDoc>();
-		ArrayList<ESDoc> onderwerpen = new ArrayList<ESDoc>();
+		ArrayList<ESDoc> onderwerpen = getExtractedGTAATopics(); //add to already extracted stuff
 		ArrayList<ESDoc> names = new ArrayList<ESDoc>();
 		
 		if (NEList.size()>0){
@@ -160,18 +183,20 @@ public class ImmixRecord {
 				}
 			}
 		}
-		setExtractedGTAANames(names);
-		setExtractedGTAAPersons(persons);
-		setExtractedGTAALocations(locations);
-		 
+		setExtractedGTAANames(removeInfrequentTerms(names));
+		setExtractedGTAAPersons(removeInfrequentTerms(persons));
+		setExtractedGTAALocations(removeInfrequentTerms(locations));
 		addExtractedGTAATopics(onderwerpen);
 		}
 	
 
 
-
+	// add topics from both sides
 	private void addExtractedGTAATopics(ArrayList<ESDoc> onderwerpen) {
-		this.extractedGTAATopics.addAll(onderwerpen); //TODO: freq here?
+		ArrayList<ESDoc> templist = new ArrayList<ESDoc>();
+		templist.addAll(onderwerpen);
+		templist.addAll(this.extractedGTAATopics);
+		this.extractedGTAATopics = removeInfrequentTerms(templist);
 	}
 
 
@@ -248,14 +273,17 @@ public class ImmixRecord {
 			return result;
 		}
 		
-	
+		
+		
 	public Element toXML(){
 		Element record = DocumentHelper.createElement("record");
 		
 		record.addAttribute("identifier",identifier);
+		record.addAttribute("docid",docID);
 		Element terms = record.addElement("terms");
 		
 		record.addAttribute("ttlength",Integer.toString(ttString.length()));
+		
 		
 		for(int j = 0;j<extractedGTAATopics.size();j++){	
 			terms.addElement("term")
@@ -439,4 +467,24 @@ public class ImmixRecord {
 	public void setMinMatches(int minMatches) {
 		this.minMatches = minMatches;
 }
+
+
+	public String getDocID() {
+		return docID;
+	}
+
+
+	public void setDocID(String docID) {
+		this.docID = docID;
+	}
+
+
+	public int getMinFreq() {
+		return minFreq;
+	}
+
+
+	public void setMinFreq(int minFreq) {
+		this.minFreq = minFreq;
+	}
 }

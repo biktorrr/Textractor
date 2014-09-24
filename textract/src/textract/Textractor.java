@@ -32,11 +32,11 @@ public class Textractor {
 	private ArrayList<String> stopwords; // list of stopwords
 	
 	private String from  = "2014-02-01T04:00:00Z";
-	private String until  = "2014-02-04T23:59:00Z";
+	private String until  = "2014-02-03T23:59:00Z";
 	
 	private int minAbsFreq = 2; // minimum frequency for a token to be added to the tokenlist
-	private double minNormFreq	= 5.00E-7;	 // minimum normalized frequency for a token to be added to the tokenlist
-	private double minScore= 3.0; // minimum score for a GTAA match 
+	private double minNormFreq	= 5.00E-5;	 // minimum normalized frequency for a token to be added to the tokenlist
+	private double minScore= 3.3; // minimum score for a GTAA match 
 
 	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
@@ -129,17 +129,20 @@ public class Textractor {
 		return result ;
 	}
 	
+	// Build Immix Record based on OAI getRecord 
 	// get the actual wordsequences for a record. question is, do we do the terms for the video as a whole or not?
 	// for now, this returns the entire string
 	// TODO: make sure we only include TT, not SH or other
-	// TODO: this could probably be done within the listrecords request. So this is not particularly efficient...
-	public  String getMetadataForOAIRecord(String recordID){
+	public ImmixRecord getMetadataForOAIRecord(String recordID){
+		ImmixRecord irnew = new ImmixRecord(recordID);
+		
 		String metadataString = "";
 		OaiPmhServer server = new OaiPmhServer(bg_oai_server);
 		Record record;
 		try {
 			record = server.getRecord(recordID, "iMMix");
 			Element metadata = record.getMetadata();
+			 //get teletekst
 			List list = metadata.selectNodes("//iMMix:sentences" );
 			Iterator iter=list.iterator();			
 			// Iterate through the word sequences
@@ -147,10 +150,17 @@ public class Textractor {
 	            Element elt =(Element) iter.next();
 	            Element wordseq =  elt.element("speech").element("wordsequence");
 	            metadataString += wordseq.getText();
-	        }		
+	        }
+			irnew.setTTString(metadataString);
+			
+			 //get doc id
+			Element docidElt = (Element) metadata.selectNodes("//iMMix:doc" ).get(0);
+			String docID = docidElt.attributeValue("id");
+			irnew.setDocID(docID);
 		}
 		catch (OAIException e) {e.printStackTrace();}	
-		return metadataString ;
+		
+		return irnew;
 	}
 	
 	
@@ -215,17 +225,14 @@ public class Textractor {
 	
 	// For one record ID, build an ImmixRecord Object and enrich it with all the GTAA terms we can find
 	public ImmixRecord retrieveAll(String recordid, ElasticGTAASearcher gtaaES) throws ParseException, IOException, DocumentException{
-		ImmixRecord ir = new ImmixRecord(recordid);
-		// get the tt stuff
 		
-		String ttString = this.getMetadataForOAIRecord(recordid);
-		ir.setTTString(ttString);	
+		ImmixRecord ir =  this.getMetadataForOAIRecord(recordid);	// initialize ImmixRecord doc
 		
 		// get the manual terms
 		ArrayList<String> manTerms = this.getExistingTerms(recordid);
 		ir.setManTerms(manTerms);
 			
-		if ( ttString.length()>0) {		
+		if ( ir.getTTString().length()>0) {		
 			// get the tokenmatches
 			ArrayList<TokenMatch> resultTM = this.getTokenMatches(gtaaES, ir);
 			if (debug){System.out.println("N=1 Matches: " + resultTM);}
@@ -250,7 +257,7 @@ public class Textractor {
 			
 			//get the ner results
 			NERrer nerrer = new NERrer();
-			ArrayList<NamedEntity> nes = nerrer.getGTAANES(gtaaES, ttString);
+			ArrayList<NamedEntity> nes = nerrer.getGTAANES(gtaaES, ir.getTTString());
 			ir.setNEList(nes);
 		}
 		else {
@@ -309,8 +316,10 @@ public class Textractor {
 		try {
 			gogo.theResults = gogo.run();
 			Document doc = gogo.resultToXML(gogo.theResults);
+			System.out.println("\n---- Writing results ----\n");
 			String filename = "output" + Long.toString(new Date().getTime()) + ".xml";
 			gogo.write(doc, filename);		
+			System.out.println("\n---- Also done ----\n");
 		} catch (ParseException | IOException | DocumentException | OAIException e) {
 			e.printStackTrace();
 		}
