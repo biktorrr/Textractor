@@ -22,7 +22,7 @@ import org.dom4j.io.XMLWriter;
 import org.xml.sax.SAXException;
 
 // from output, make html form thing
-public class SurveyMaker {
+public class SurveySheetMaker {
 	
 	private int max = 3; 
 
@@ -35,7 +35,7 @@ public class SurveyMaker {
            Element elt =(Element) iter.next();
            if (!elt.attributeValue("ttlength").equals("0")){
         	   //there should be stuff
-        	   makeOneHTMLPage(elt,i);
+        	   makeOneSheet(elt,i);
         	   i++;
            }
         	   
@@ -44,7 +44,7 @@ public class SurveyMaker {
 	}
 	
 	
-	private void makeOneHTMLPage(Element elt, int i) {
+	private void makeOneSheet(Element elt, int i) {
 		Document htmldocument =  DocumentHelper.createDocument();
 		Element htmlroot = htmldocument.addElement("html").addElement("body");
 		
@@ -145,7 +145,7 @@ public class SurveyMaker {
 	    }
 	
 	public static void main(String[] args) {
-		SurveyMaker svm = new SurveyMaker();
+		SurveySheetMaker svm = new SurveySheetMaker();
 		Document doc;
 		try {
 			doc = svm.openXMLFile("C:/Users/vdboer/git/textract/textract/output1411566113110.xml");

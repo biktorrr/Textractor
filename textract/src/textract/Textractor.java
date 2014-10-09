@@ -31,18 +31,28 @@ public class Textractor {
 	
 	private ArrayList<String> stopwords; // list of stopwords
 	
-	private String from  = "2014-02-01T04:00:00Z";
-	private String until  = "2014-02-03T23:59:00Z";
+	private String from  = "2014-01-06T04:59:00Z";
+	private String until  = "2014-01-06T23:59:00Z";
 	
 	private int minAbsFreq = 2; // minimum frequency for a token to be added to the tokenlist
-	private double minNormFreq	= 5.00E-5;	 // minimum normalized frequency for a token to be added to the tokenlist
-	private double minScore= 3.3; // minimum score for a GTAA match 
+	private double minNormFreq	= 4.00E-5;	 // minimum normalized frequency for a token to be added to the tokenlist
+	private double minScore= 3.7; // minimum score for a GTAA match 
 
 	private TermFrequency termfreqFinder; // the object used to determine normalized frequencies
 
-	private  ArrayList<ImmixRecord> theResults;
+	private ArrayList<ImmixRecord> theResults;
 
 	
+	public ArrayList<ImmixRecord> getTheResults() {
+		return theResults;
+	}
+
+
+	public void setTheResults(ArrayList<ImmixRecord> theResults) {
+		this.theResults = theResults;
+	}
+
+
 	public Textractor(){
 		stopwords = new StopWords().getStopwords();
 	}
@@ -211,6 +221,17 @@ public class Textractor {
 		
 	}
 	
+	
+	// transform a list of immixrecords (a result) to CSV document
+	public String resultToCSV(ArrayList<ImmixRecord> endResult){
+		String result = "";
+		for(ImmixRecord e : endResult){
+			result += (e.toCSV());
+		}
+			
+		return result;
+		
+	}
 	//wriet an XML document
 	public void write(Document document, String fileString) throws IOException {
 		
@@ -237,19 +258,12 @@ public class Textractor {
 			ArrayList<TokenMatch> resultTM = this.getTokenMatches(gtaaES, ir);
 			if (debug){System.out.println("N=1 Matches: " + resultTM);}
 			
-			
 			ArrayList<TokenMatch> resultTM2 = this.getNGramMatches(gtaaES, ir, 2);
-			if (resultTM2.size()>0) {
-				System.out.println(" Found bigram matches: ");
-				//for (int j=0; j<resultTM2.size();j++){System.out.println(" " + resultTM2.get(j).toString());}
-			}
-			if (debug){System.out.println("N=1 Matches: " + resultTM);}
+			if (debug){System.out.println("N=2 Matches: " + resultTM2);}
 
 			ArrayList<TokenMatch> resultTM3 = this.getNGramMatches(gtaaES, ir, 3 );
-			if (resultTM3.size()>0) {
-				System.out.println(" Found trigram matches: ");
-				//for (int j=0; j<resultTM3.size();j++){System.out.println(" " + resultTM3.get(j).toString());}
-			}
+			if (debug){System.out.println("N=3 Matches: " + resultTM3);}
+
 			resultTM.addAll(resultTM2);
 			resultTM.addAll(resultTM3);
 	

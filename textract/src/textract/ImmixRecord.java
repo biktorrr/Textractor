@@ -110,7 +110,7 @@ public class ImmixRecord {
 	public void consolidateNE(){
 		ArrayList<ESDoc> persons = new ArrayList<ESDoc>();
 		ArrayList<ESDoc> locations = new ArrayList<ESDoc>();
-		ArrayList<ESDoc> onderwerpen = getExtractedGTAATopics(); //add to already extracted stuff
+		ArrayList<ESDoc> onderwerpen = new ArrayList<ESDoc>() ; //getExtractedGTAATopics(); //add to already extracted stuff
 		ArrayList<ESDoc> names = new ArrayList<ESDoc>();
 		
 		if (NEList.size()>0){
@@ -273,7 +273,49 @@ public class ImmixRecord {
 			return result;
 		}
 		
-		
+		public String toCSV(){
+			String returnString  ="" ;
+			
+						
+			for(int j = 0;j<extractedGTAATopics.size();j++){	
+				returnString += identifier+ ";";
+				returnString += docID+ ";";
+				returnString += "Onderwerpen" + ";";  
+				returnString += extractedGTAATopics.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/") + ";";  
+				returnString += extractedGTAATopics.get(j).preflabel + ";";
+				returnString += Integer.toString(extractedGTAATopics.get(j).freq) + "\n";
+
+			}
+			
+			for(int j = 0;j<extractedGTAAPersons.size();j++){	
+				returnString += identifier+ ";";
+				returnString += docID+ ";";
+				returnString += "PersoonsNamen" + ";";  
+				returnString += extractedGTAAPersons.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/") + ";";  
+				returnString += extractedGTAAPersons.get(j).preflabel + ";";
+				returnString += Integer.toString(extractedGTAAPersons.get(j).freq) + "\n";
+			}
+			
+			for(int j = 0;j<extractedGTAALocations.size();j++){	
+				returnString += identifier+ ";";
+				returnString += docID+ ";";
+				returnString += "GeografischeNamen" + ";";  
+				returnString += extractedGTAALocations.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/") + ";";  
+				returnString += extractedGTAALocations.get(j).preflabel + ";";
+				returnString += Integer.toString(extractedGTAALocations.get(j).freq) + "\n";
+			}
+			
+			for(int j = 0;j<extractedGTAANames.size();j++){	
+				returnString += identifier+ ";";
+				returnString += docID+ ";";
+				returnString += "Namen" + ";";  
+				returnString += extractedGTAANames.get(j).uri.replace("http:__","http://").replace("_gtaa_", "/gtaa/") + ";";  
+				returnString += extractedGTAANames.get(j).preflabel + ";";
+				returnString += Integer.toString(extractedGTAANames.get(j).freq) + "\n";
+			}
+			return returnString;
+			
+		}	
 		
 	public Element toXML(){
 		Element record = DocumentHelper.createElement("record");
