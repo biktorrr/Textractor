@@ -23,16 +23,15 @@ public class Runner {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		Calendar c = Calendar.getInstance();
 		c.setTime(sdf.parse(prevDate));
-		c.add(Calendar.DATE, 1);  // number of days to add
+		c.add(Calendar.HOUR_OF_DAY, 1);  // number of days to add
 		return sdf.format(c.getTime());  // dt is now the new date
 		}
 	
 	
 	public static void main(String[] args) {
-		Textractor gogo = new Textractor();
 		
-		String start = "2013-09-01T00:00:00Z";
-		String end = "2013-09-02T00:00:00Z";
+		String start = "2014-04-09T13:00:00Z";
+		String end = "2014-04-09T14:00:00Z";
 		
 		String filename = "output" + Long.toString(new Date().getTime()) + ".csv";
 
@@ -46,9 +45,17 @@ public class Runner {
 			e1.printStackTrace();
 		} 
 		   
-		for (int i=0;i<3;i++){
+		long starttime = System.currentTimeMillis();
+		for (int i=0;i<3000;i++){
 			
 			try {
+				Textractor gogo = new Textractor();
+				gogo.setFrom(start);
+				gogo.setUntil(end);
+				long midtime = System.currentTimeMillis();
+				System.out.println("Current duration = " + Long.toString(midtime-starttime));
+				System.out.println("\n\n NEW INTERVAL: "+ i + " -> "+ start + " - "+end );
+
 				gogo.setTheResults(gogo.run());
 				String result = gogo.resultToCSV(gogo.getTheResults());	
 				FileWriter fw2 = new FileWriter(filename,true); //the true will append the new data
@@ -61,8 +68,6 @@ public class Runner {
 				e1.printStackTrace();
 			}
 				
-			
-			i++;
 			start = end;
 			try {
 				end = getNextDate(start);
@@ -70,8 +75,10 @@ public class Runner {
 				e.printStackTrace();
 			} 
 		}
-
 		
+		long endtime = System.currentTimeMillis();
+		System.out.println("Duration = " + Long.toString(endtime-starttime));
+
 	}
 
 

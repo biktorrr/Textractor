@@ -71,30 +71,32 @@ public class NERrer {
 		ArrayList<NamedEntity> result = new ArrayList<NamedEntity>();
 
 			String kafResult = getTreeKafFromCLTL(inputString);
-			String nerResult_dirty = getNerResultFromCLTL(kafResult);
+			String nerResult = getNerResultFromCLTL(kafResult);
+			if (nerResult.length()>0){
 			
-			String nerResult = cleanNerResult(nerResult_dirty);
-			
-			Document document = DocumentHelper.parseText(nerResult);
-			List list = document.selectNodes("//entity");
-			
-			for (int i=0;i<list.size();i++){
-				NamedEntity ne = new NamedEntity();
-				Element entity = (Element) list.get(i);
-				ne.neClass = entity.attributeValue("type");
-				String neString = "";
-				Element refs =  entity.element("references");
-				for (Iterator it = refs.nodeIterator(); it.hasNext();){
-					Node node = (Node) it.next();
-					if (node.getNodeType()==Node.COMMENT_NODE){
-						neString = node.getText();					
+				Document document = DocumentHelper.parseText(nerResult);
+				List list = document.selectNodes("//entity");
+				
+				for (int i=0;i<list.size();i++){
+					NamedEntity ne = new NamedEntity();
+					Element entity = (Element) list.get(i);
+					ne.neClass = entity.attributeValue("type");
+					String neString = "";
+					Element refs =  entity.element("references");
+					for (Iterator it = refs.nodeIterator(); it.hasNext();){
+						Node node = (Node) it.next();
+						if (node.getNodeType()==Node.COMMENT_NODE){
+							neString = node.getText();					
+						}
 					}
+					ne.neString = neString;
+					result.add(ne);
 				}
-				ne.neString = neString;
-				result.add(ne);
+				
 			}
-			
-
+			else{
+				System.out.println("empty NER");
+			}
 		return result;
 	}
 	
