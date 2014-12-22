@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <from>2014-01-03T04p59p00Z</from>
+  <to>2014-01-03T23p59p00Z</to>
+  <minNormFreq>5.0E-5</minNormFreq>
+  <minScore>3.3</minScore>
+  <minAbsFreq>2</minAbsFreq>
+  <results>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4166492" docid="/13287/13287/381680/4166492" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:215068" docid="/352646/357553/393972/215068" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:180041" docid="/352646/357553/393972/180041" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:22851" docid="/10193/10193/10193/22851" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207278" docid="/27080/27360/391632/4207278" ttlength="7762">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26171" score="6">licht</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26171" score="6">licht</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/35230" score="2">Friesland</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:1022381" docid="/16629/16711/16666/1022381" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205652" docid="/244356/247316/391520/4205652" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205378" docid="/16629/16711/391489/4205378" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207098" docid="/10055/10058/321692/4207098" ttlength="13282">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="13">vuurwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="2">geluk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="2">vuurwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="13">vuurwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="2">geluk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="2">vuurwerk</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/34797" score="3">Emmer-Compascuum</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:426785" docid="/12068/12070/12070/426785" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:212412" docid="/11949/11950/11950/212412" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:167657" docid="/10722/10722/10722/167657" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:128464" docid="/10741/10741/10741/128464" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206475" docid="/11972/11973/393786/4206475" ttlength="25554">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26762" score="2">soul</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26762" score="2">soul</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/147310" score="3">Romme, Gianni</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/156097" score="2">Somerville, Jimmy</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/107176" score="3">Harrison, George</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/89565" score="4">Clapton, Eric</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/39610" score="2">Milwaukee</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4203968" docid="/13343/13343/13343/4203968" ttlength="120380">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28089" score="49">weer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27291" score="23">voetbal</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26774" score="22">spelen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28369" score="16">jongens</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27770" score="9">mannen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28015" score="9">vrouwen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28061" score="9">zwemmen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28028" score="8">missie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28543" score="7">dieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28181" score="6">sport</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27859" score="6">wind</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27887" score="5">regen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29803" score="5">stemmen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28065" score="5">zomer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28219" score="3">democratie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="3">geluk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26628" score="3">rekenen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28227" score="3">televisie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27812" score="3">volleybal</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27326" score="3">vuur</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/226264" score="2">afscheid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27959" score="2">boeren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27962" score="2">bomen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28230" score="2">energiebeleid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25275" score="2">handel</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27154" score="2">lente</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27771" score="2">management</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28117" score="2">sneeuw</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26953" score="2">trainers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27470" score="2">zijde</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28904" score="7">spierziekten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28607" score="2">EHBO</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26413" score="2">kijk- en luistergeld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29134" score="16">normen en waarden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29217" score="16">hang-en-sluitwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27579" score="16">loon- en prijsbeleid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29791" score="16">loven en bieden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26413" score="16">kijk- en luistergeld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28938" score="16">schaal- en schelpdieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26322" score="16">mond-en-klauwzeer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29797" score="16">paard-en-wagen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29792" score="16">meld- en regelkamers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29242" score="16">wegenbouw</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29142" score="4">rechten van het kind</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28904" score="3">spierziekten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28089" score="49">weer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27291" score="23">voetbal</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26774" score="22">spelen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28369" score="16">jongens</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27770" score="9">mannen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28015" score="9">vrouwen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28061" score="9">zwemmen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28028" score="8">missie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28543" score="7">dieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28181" score="6">sport</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27859" score="6">wind</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27887" score="5">regen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29803" score="5">stemmen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28065" score="5">zomer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28219" score="3">democratie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="3">geluk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26628" score="3">rekenen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28227" score="3">televisie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27812" score="3">volleybal</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27326" score="3">vuur</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/226264" score="2">afscheid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27959" score="2">boeren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27962" score="2">bomen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28230" score="2">energiebeleid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25275" score="2">handel</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27154" score="2">lente</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27771" score="2">management</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28117" score="2">sneeuw</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26953" score="2">trainers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27470" score="2">zijde</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28904" score="7">spierziekten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28607" score="2">EHBO</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26413" score="2">kijk- en luistergeld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29134" score="16">normen en waarden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29217" score="16">hang-en-sluitwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27579" score="16">loon- en prijsbeleid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29791" score="16">loven en bieden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26413" score="16">kijk- en luistergeld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28938" score="16">schaal- en schelpdieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26322" score="16">mond-en-klauwzeer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29797" score="16">paard-en-wagen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29792" score="16">meld- en regelkamers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29242" score="16">wegenbouw</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29142" score="4">rechten van het kind</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28904" score="3">spierziekten</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206162" docid="/16621/16701/391519/4206162" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207355" docid="/266552/270052/355472/4207355" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207188" docid="/10228/10228/391373/4207188" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207382" docid="/344585/349283/393032/4207382" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207358" docid="/316795/321089/381796/4207358" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207348" docid="/352626/357533/393945/4207348" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206145" docid="/244354/247314/262815/4206145" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205355" docid="/115331/116451/392842/4205355" ttlength="24638">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27876" score="4">beeldend kunstenaars</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25478" score="2">dansen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27876" score="4">beeldend kunstenaars</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25478" score="2">dansen</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/43319" score="2">Tegelen</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:502718" docid="/27761/28061/29141/502718" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:476125" docid="/102070/102890/106291/476125" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474558" docid="/13394/13394/13394/474558" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474562" docid="/13394/13394/13394/474562" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:439085" docid="/86812/87632/90953/439085" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206275" docid="/11741/357392/393776/4206275" ttlength="17873">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26152" score="3">leer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26152" score="3">leer</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/35230" score="4">Friesland</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/36717" score="5">Iran</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/31711" score="2">Apeldoorn</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206018" docid="/244356/247316/391520/4206018" ttlength="55726">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28029" score="20">geld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25387" score="11">armoede</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28253" score="10">vrede</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28514" score="6">burgers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29803" score="4">stemmen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29134" score="4">normen en waarden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27121" score="3">politici</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29515" score="3">vliegen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27381" score="3">werkloosheid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/226713" score="2">debatten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26841" score="2">stilte</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28005" score="2">uitkeringen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29134" score="2">normen en waarden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29217" score="2">hang-en-sluitwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27579" score="2">loon- en prijsbeleid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29791" score="2">loven en bieden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26413" score="2">kijk- en luistergeld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28938" score="2">schaal- en schelpdieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26322" score="2">mond-en-klauwzeer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29797" score="2">paard-en-wagen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29792" score="2">meld- en regelkamers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29242" score="2">wegenbouw</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28029" score="20">geld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25387" score="11">armoede</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28253" score="10">vrede</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28514" score="6">burgers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29803" score="4">stemmen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29134" score="4">normen en waarden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27121" score="3">politici</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29515" score="3">vliegen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27381" score="3">werkloosheid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/226713" score="2">debatten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26841" score="2">stilte</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28005" score="2">uitkeringen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29134" score="2">normen en waarden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29217" score="2">hang-en-sluitwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27579" score="2">loon- en prijsbeleid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29791" score="2">loven en bieden</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26413" score="2">kijk- en luistergeld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28938" score="2">schaal- en schelpdieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26322" score="2">mond-en-klauwzeer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29797" score="2">paard-en-wagen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29792" score="2">meld- en regelkamers</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29242" score="2">wegenbouw</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:756275" docid="/182539/183779/189365/756275" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4039252" docid="/16502/16882/16842/4039252" ttlength="32701">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27859" score="10">wind</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28699" score="4">vlaggen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26222" score="3">marathon</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="2">geluk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27859" score="10">wind</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28699" score="4">vlaggen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26222" score="3">marathon</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="2">geluk</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/166675" score="2">Vos, Marianne</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/35337" score="2">Garmisch-Partenkirchen</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/40325" score="7">Oostenrijk</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/40172" score="11">Oberstdorf</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/41002" score="3">Polen</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/38787" score="3">Londen</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207328" docid="/352575/357481/393878/4207328" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:21524" docid="/13744/13744/13744/21524" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205632" docid="/44622/357278/393639/4205632" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:172127" docid="/66083/66743/68904/172127" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:173867" docid="/32103/32443/33584/173867" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:540008" docid="/101728/102548/105949/540008" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916743" docid="/13287/13287/381680/4166492/94916743" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916740" docid="/13287/13287/381680/4166492/94916740" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916739" docid="/13287/13287/381680/4166492/94916739" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916746" docid="/13287/13287/381680/4166492/94916746" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916306" docid="/11949/322970/391782/4204250/94916306" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916720" docid="/27446/225311/391505/4205299/94916720" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:162451" docid="/11949/11950/11950/212412/162451" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916773" docid="/16502/32000/33440/4206623/94916773" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:182021" docid="/13059/13059/13059/217584/182021" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916769" docid="/16414/16435/16435/4207410/94916769" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916766" docid="/16414/16435/16435/4207410/94916766" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916763" docid="/16414/16435/16435/4207410/94916763" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916760" docid="/16414/16435/16435/4207410/94916760" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916753" docid="/16414/16435/16435/4207407/94916753" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916710" docid="/16414/16435/16435/4207361/94916710" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916709" docid="/16414/16435/16435/4207361/94916709" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916706" docid="/16414/16435/16435/4207361/94916706" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916703" docid="/16414/16435/16435/4207361/94916703" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916686" docid="/16414/16435/16435/4207287/94916686" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916693" docid="/16414/16435/16435/4207287/94916693" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916689" docid="/16414/16435/16435/4207287/94916689" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:92653063" docid="/13744/13744/13744/21524/92653063" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:458965" docid="/33834/34236/35596/570146/458965" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:165141" docid="/16027/17373/17314/213119/165141" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:193334" docid="/32420/32761/33909/221054/193334" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206166" docid="/318632/322992/391521/4206166" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206029" docid="/16629/16711/391489/4206029" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207346" docid="/188051/189371/391633/4207346" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:476124" docid="/102070/102890/106291/476124" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206473" docid="/11741/357392/393776/4206473" ttlength="19362">
+      <terms>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/164361" score="2">Wallis de Vries, Sanne</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/148837" score="2">Sandifort, Martine</term>
+        <term axis="Namen" uri="http://data.beeldengeluid.nl/gtaa/58997" score="3">Kopspijkers</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206216" docid="/16618/249651/391776/4206216" ttlength="25614">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28322" score="2">gebouwen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27154" score="2">lente</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27768" score="2">musea</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26527" score="2">planten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28322" score="2">gebouwen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27154" score="2">lente</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27768" score="2">musea</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26527" score="2">planten</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/157631" score="3">Stapel, Huub</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/122825" score="3">Leeuw, Reinbert de</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/147932" score="2">Roozendaal, Maarten van</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/159818" score="3">Taminiau, Jan</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/39819" score="2">New York (stad)</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/212712" score="2">New York (staat)</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/36352" score="2">Hoboken (New York)</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207570" docid="/352656/357563/393984/4207570" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207569" docid="/352655/357562/393983/4207569" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207326" docid="/352573/357479/393876/4207326" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:183938" docid="/56462/57122/59242/183938" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:181992" docid="/54910/55570/57650/181992" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:192225" docid="/10760/10760/10760/192225" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:183165" docid="/32405/32746/33894/183165" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:182978" docid="/66230/66890/69051/182978" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:27578" docid="/16106/16127/16127/27578" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:180088" docid="/352646/357553/393972/180088" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:125472" docid="/352646/357553/393972/125472" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207393" docid="/345084/349798/393609/4207393" ttlength="16634">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28339" score="2">goud</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29079" score="2">haat</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28339" score="2">goud</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29079" score="2">haat</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/86752" score="3">Bruijn, Inge de</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/110851" score="2">Hugo</term>
+        <term axis="Namen" uri="http://data.beeldengeluid.nl/gtaa/74979" score="6">Zo vader zo zoon</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4204250" docid="/11949/322970/391782/4204250" ttlength="22621">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28015" score="17">vrouwen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28543" score="13">dieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26571" score="8">prostitutie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25115" score="3">chimpansees</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27787" score="3">meisjes</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25387" score="2">armoede</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25295" score="2">bevrijding</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27731" score="2">straffen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28227" score="2">televisie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27825" score="2">varkens</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28015" score="17">vrouwen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28543" score="13">dieren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26571" score="8">prostitutie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25115" score="3">chimpansees</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27787" score="3">meisjes</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25387" score="2">armoede</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25295" score="2">bevrijding</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27731" score="2">straffen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28227" score="2">televisie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27825" score="2">varkens</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/40348" score="3">Oost-Europa</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/36148" score="6">Heidelberg (Zuid-Afrika)</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/37634" score="6">Kirkwood (Zuid-Afrika)</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/45268" score="6">Zuid-Afrika</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/31887" score="6">Atlantis (Zuid-Afrika)</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/44296" score="6">Virginia (Zuid-Afrika)</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/33193" score="6">Buxton (Zuid-Afrika)</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/32146" score="2">Bangladesh</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205299" docid="/27446/225311/391505/4205299" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:217584" docid="/13059/13059/13059/217584" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:184005" docid="/32156/32497/33638/184005" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206899" docid="/319629/349065/392845/4206899" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:182975" docid="/70511/71191/73432/182975" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:936564" docid="/10277/10277/10277/936564" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:128698" docid="/10306/10306/10306/128698" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206620" docid="/11972/11973/393786/4206620" ttlength="24783">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26762" score="4">soul</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26609" score="2">reclame</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26762" score="4">soul</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26609" score="2">reclame</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/162748" score="2">Ubbink, Hans</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/84707" score="2">Bosch, Edith</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/85312" score="7">Bowie, David</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/39538" score="2">Michigan</term>
+        <term axis="Namen" uri="http://data.beeldengeluid.nl/gtaa/66665" score="2">Radio 2 Zendtijdprijs</term>
+        <term axis="Namen" uri="http://data.beeldengeluid.nl/gtaa/66664" score="2">Radio 2</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206160" docid="/105809/106629/110030/4206160" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206623" docid="/16502/32000/33440/4206623" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:109248" docid="/56234/56894/59014/109248" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207396" docid="/320580/324997/388552/4207396" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:124992" docid="/16027/16047/16047/124992" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207376" docid="/335370/340025/383431/4207376" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:119715" docid="/64215/64875/67036/119715" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207330" docid="/352586/357492/393890/4207330" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474561" docid="/13394/13394/13394/474561" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474557" docid="/13394/13394/13394/474557" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:476197" docid="/13975/13995/13995/476197" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206026" docid="/13980/14000/14000/4206026" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207413" docid="/16480/16520/16520/4207413" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207410" docid="/16414/16435/16435/4207410" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205386" docid="/195031/196891/391513/4205386" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207169" docid="/16502/16882/16842/4207169" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205300" docid="/315604/322981/391506/4205300" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207323" docid="/318733/323100/391673/4207323" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207333" docid="/245471/248431/393705/4207333" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:221054" docid="/32420/32761/33909/221054" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207313" docid="/16447/16467/393889/4207313" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:175608" docid="/32156/32497/33638/175608" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205081" docid="/319181/323560/392967/4205081" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:180556" docid="/352646/357553/393972/180556" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:180259" docid="/352646/357553/393972/180259" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:27519" docid="/352646/357553/393972/27519" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207391" docid="/10073/10076/391651/4207391" ttlength="10482">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/226264" score="2">afscheid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28369" score="2">jongens</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/226264" score="2">afscheid</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28369" score="2">jongens</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205134" docid="/318746/323112/391889/4205134" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205637" docid="/16629/16711/391489/4205637" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205157" docid="/13975/13995/391731/4205157" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:21253" docid="/13626/13626/13626/21253" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:893216" docid="/10055/10058/10058/893216" ttlength="13282">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="13">vuurwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="2">geluk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="2">vuurwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="13">vuurwerk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29084" score="2">geluk</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27329" score="2">vuurwerk</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/34797" score="3">Emmer-Compascuum</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:184019" docid="/32156/32497/33638/184019" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:184010" docid="/32156/32497/33638/184010" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:184016" docid="/32156/32497/33638/184016" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:184610" docid="/10306/10306/10306/184610" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206167" docid="/343288/347974/391522/4206167" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206164" docid="/244356/247316/391520/4206164" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206161" docid="/244353/247313/391518/4206161" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206151" docid="/16629/16711/391489/4206151" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206137" docid="/205431/207451/393664/4206137" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:475213" docid="/13702/13702/13702/475213" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207354" docid="/17401/17521/388747/4207354" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:502753" docid="/11799/11799/11799/502753" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207327" docid="/352574/357480/393877/4207327" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474556" docid="/13394/13394/13394/474556" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474456" docid="/13394/13394/13394/474456" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474563" docid="/13394/13394/13394/474563" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206147" docid="/13980/14000/14000/4206147" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474073" docid="/13374/13374/13374/474073" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207411" docid="/311240/321281/391755/4207411" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207377" docid="/352629/357536/393948/4207377" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4206557" docid="/11972/11973/393786/4206557" ttlength="31150">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28584" score="2">foto's</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28029" score="2">geld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28986" score="2">hemel</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26634" score="2">religieuze muziek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28584" score="2">foto's</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28029" score="2">geld</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28986" score="2">hemel</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26634" score="2">religieuze muziek</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/164392" score="3">Walraven, Simone</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/170554" score="5">Williams, Robbie</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/90639" score="2">Costello, Elvis</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/131285" score="2">Meeuwis, Guus</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/108694" score="2">Hiatt, John</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/130843" score="2">McCartney, Paul</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/226185" score="2">Wainwright, Rufus</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/85312" score="2">Bowie, David</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:104879" docid="/53607/54267/56347/104879" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:570146" docid="/33834/34236/35596/570146" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4205377" docid="/44622/357278/393639/4205377" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207287" docid="/16414/16435/16435/4207287" ttlength="6135">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28575" score="3">gas</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28480" score="2">ijs</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28575" score="3">gas</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28480" score="2">ijs</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:476196" docid="/13975/13995/13995/476196" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474559" docid="/13394/13394/13394/474559" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:474560" docid="/13394/13394/13394/474560" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207407" docid="/16414/16435/16435/4207407" ttlength="6525">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26841" score="4">stilte</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27787" score="3">meisjes</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26841" score="3">stilte</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26841" score="4">stilte</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27787" score="3">meisjes</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26841" score="3">stilte</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/36670" score="3">India</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207361" docid="/16414/16435/16435/4207361" ttlength="9022">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28181" score="2">sport</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28181" score="2">sport</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/232295" score="2">Verga, Valentin</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/36670" score="2">India</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207584" docid="/242991/294691/391380/4207584" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:183099" docid="/32420/32761/33909/183099" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:181826" docid="/70452/71132/73373/181826" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:183133" docid="/56164/56824/58944/183133" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:183180" docid="/10306/10306/10306/183180" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:458410" docid="/101728/102548/105949/458410" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:133763" docid="/10741/10741/10741/133763" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207574" docid="/224191/226631/238392/4207574" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4207567" docid="/232731/235231/248072/4207567" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:213119" docid="/16027/17373/17314/213119" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:226886" docid="/11949/11950/11950/226886" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:182840" docid="/56462/57122/59242/182840" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916722" docid="/27446/225311/391505/4205299/94916722" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94912755" docid="/11949/322970/391782/4204250/94912755" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916305" docid="/11949/322970/391782/4204250/94916305" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916742" docid="/13287/13287/381680/4166492/94916742" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916738" docid="/13287/13287/381680/4166492/94916738" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916748" docid="/13287/13287/381680/4166492/94916748" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916745" docid="/13287/13287/381680/4166492/94916745" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916755" docid="/16414/16435/16435/4207407/94916755" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916768" docid="/16414/16435/16435/4207410/94916768" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916765" docid="/16414/16435/16435/4207410/94916765" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916762" docid="/16414/16435/16435/4207410/94916762" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916778" docid="/16502/32000/33440/4206623/94916778" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916775" docid="/16502/32000/33440/4206623/94916775" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:393593" docid="/12068/12070/12070/426785/393593" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916685" docid="/16414/16435/16435/4207287/94916685" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916695" docid="/16414/16435/16435/4207287/94916695" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916692" docid="/16414/16435/16435/4207287/94916692" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916688" docid="/16414/16435/16435/4207287/94916688" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916712" docid="/16414/16435/16435/4207361/94916712" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916708" docid="/16414/16435/16435/4207361/94916708" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916705" docid="/16414/16435/16435/4207361/94916705" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916702" docid="/16414/16435/16435/4207361/94916702" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916752" docid="/16414/16435/16435/4207407/94916752" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:165143" docid="/16027/17373/17314/213119/165143" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:165140" docid="/16027/17373/17314/213119/165140" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:165139" docid="/16027/17373/17314/213119/165139" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:411899" docid="/101728/102548/105949/458410/411899" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:193333" docid="/32420/32761/33909/221054/193333" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916741" docid="/13287/13287/381680/4166492/94916741" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916747" docid="/13287/13287/381680/4166492/94916747" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916744" docid="/13287/13287/381680/4166492/94916744" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:92899215" docid="/13626/13626/13626/21253/92899215" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916721" docid="/27446/225311/391505/4205299/94916721" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916701" docid="/16414/16435/16435/4207361/94916701" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916694" docid="/16414/16435/16435/4207287/94916694" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916691" docid="/16414/16435/16435/4207287/94916691" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916687" docid="/16414/16435/16435/4207287/94916687" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916711" docid="/16414/16435/16435/4207361/94916711" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916707" docid="/16414/16435/16435/4207361/94916707" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916704" docid="/16414/16435/16435/4207361/94916704" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:458964" docid="/33834/34236/35596/570146/458964" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:162452" docid="/11949/11950/11950/212412/162452" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:165142" docid="/16027/17373/17314/213119/165142" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:92900165" docid="/101728/102548/105949/540008/92900165" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916751" docid="/16414/16435/16435/4207407/94916751" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916754" docid="/16414/16435/16435/4207407/94916754" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916767" docid="/16414/16435/16435/4207410/94916767" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916764" docid="/16414/16435/16435/4207410/94916764" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94916761" docid="/16414/16435/16435/4207410/94916761" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:182022" docid="/13059/13059/13059/217584/182022" ttlength="0">
+      <terms/>
+    </record>
+  </results>
+</root>

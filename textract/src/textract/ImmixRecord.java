@@ -445,14 +445,6 @@ public class ImmixRecord {
 		NEList = nEList;
 	}
 
-	public String getTtString() {
-		return ttString;
-	}
-
-
-	public void setTtString(String ttString) {
-		this.ttString = ttString;
-	}
 
 
 	public ArrayList<ESDoc> getExtractedGTAATerms() {

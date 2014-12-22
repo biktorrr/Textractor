@@ -15,7 +15,7 @@ public class NamedEntity {
 			return "[ "+ neString + " | "+ neClass + " | " + gtaaMatches.toString() + "]";
 		}
 		else{
-			return "[ "+ neString + " | "+ neClass + " | no matches (yet) ]";
+			return "[ "+ neString + " | "+ neClass + " ]";
 		}
 	}
 }

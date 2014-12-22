@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <from>2014-02-01T04p00p00Z</from>
+  <to>2014-02-01T23p59p00Z</to>
+  <minNormFreq>5.0E-7</minNormFreq>
+  <minScore>3.0</minScore>
+  <minAbsFreq>2</minAbsFreq>
+  <results>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924623" docid="/16735/16815/391609/4213418/94924623" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924796" docid="/318664/323026/353801/4213428/94924796" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924606" docid="/16735/16815/391609/4213418/94924606" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924609" docid="/16735/16815/391609/4213418/94924609" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217268" docid="/242991/294691/390939/4217268" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4122325" docid="/342515/347221/380883/4122325" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217025" docid="/16470/16490/16490/4217025" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217272" docid="/242991/294691/390939/4217272" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4134942" docid="/342515/347221/380883/4134942" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4134005" docid="/342515/347221/380883/4134005" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4140662" docid="/342515/347221/380883/4140662" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217015" docid="/315347/357764/394385/4217015" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4213418" docid="/16735/16815/391609/4213418" ttlength="25174">
+      <terms>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29203" score="19">lange mensen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29587" score="4">ziekte van Creutzfeldt-Jakob</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26843" score="4">stofwisselingsziekten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25493" score="4">dementie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/30026" score="4">ziekte van Lyme</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29889" score="4">ziekte van Crohn</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25493" score="3">dementie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29957" score="3">tijd</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27165" score="2">leraren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26634" score="2">religieuze muziek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25853" score="2">hedendaagse muziek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29060" score="2">Latijns-Amerikaanse muziek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28414" score="2">ogen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26584" score="2">publiek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28089" score="2">weer</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29203" score="19">lange mensen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29587" score="4">ziekte van Creutzfeldt-Jakob</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26843" score="4">stofwisselingsziekten</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25493" score="4">dementie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/30026" score="4">ziekte van Lyme</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29889" score="4">ziekte van Crohn</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25493" score="3">dementie</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29957" score="3">tijd</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/27165" score="2">leraren</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26634" score="2">religieuze muziek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/25853" score="2">hedendaagse muziek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/29060" score="2">Latijns-Amerikaanse muziek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28414" score="2">ogen</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/26584" score="2">publiek</term>
+        <term axis="Onderwerpen" uri="http://data.beeldengeluid.nl/gtaa/28089" score="2">weer</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/115279" score="3">Japin, Arthur</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/92905" score="4">Derks, Pieter</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/151056" score="2">Schenk, Ard</term>
+        <term axis="PersoonsNamen" uri="http://data.beeldengeluid.nl/gtaa/157131" score="2">Swaab, Dick</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/40604" score="2">Pakistan</term>
+        <term axis="GeografischeNamen" uri="http://data.beeldengeluid.nl/gtaa/38787" score="2">Londen</term>
+        <term axis="Namen" uri="http://data.beeldengeluid.nl/gtaa/214910" score="3">Go Back to the Zoo</term>
+        <term axis="Namen" uri="http://data.beeldengeluid.nl/gtaa/49947" score="2">de Volkskrant</term>
+      </terms>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4125038" docid="/342515/347221/380883/4125038" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4124248" docid="/342515/347221/380883/4124248" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217045" docid="/247340/250440/267581/4217045" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4125032" docid="/342515/347221/380883/4125032" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4122278" docid="/342515/347221/380883/4122278" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217029" docid="/16453/16473/16473/4217029" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4143409" docid="/342515/347221/380883/4143409" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4122326" docid="/342515/347221/380883/4122326" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4134919" docid="/342515/347221/380883/4134919" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4133953" docid="/342515/347221/380883/4133953" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4141956" docid="/342515/347221/380883/4141956" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4125046" docid="/342515/347221/380883/4125046" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4140300" docid="/342515/347221/380883/4140300" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217009" docid="/16447/16467/393889/4217009" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4217030" docid="/16449/16469/391730/4217030" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4143893" docid="/342515/347221/380883/4143893" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4122364" docid="/342515/347221/380883/4122364" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4125054" docid="/342515/347221/380883/4125054" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4133954" docid="/342515/347221/380883/4133954" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4134954" docid="/342515/347221/380883/4134954" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4134941" docid="/342515/347221/380883/4134941" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4134831" docid="/342515/347221/380883/4134831" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4122294" docid="/342515/347221/380883/4122294" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4122287" docid="/342515/347221/380883/4122287" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Expressie:4143894" docid="/342515/347221/380883/4143894" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924602" docid="/16735/16815/391609/4213418/94924602" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924605" docid="/16735/16815/391609/4213418/94924605" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924612" docid="/16735/16815/391609/4213418/94924612" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924615" docid="/16735/16815/391609/4213418/94924615" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924611" docid="/16735/16815/391609/4213418/94924611" ttlength="0">
+      <terms/>
+    </record>
+    <record identifier="oai:beeldengeluid.nl:Selectie:94924614" docid="/16735/16815/391609/4213418/94924614" ttlength="0">
+      <terms/>
+    </record>
+  </results>
+</root>
